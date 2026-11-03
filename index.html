@@ -204,6 +204,10 @@
     font-weight:400;
   }
   .hero-actions{ margin-top:44px; display:flex; gap:16px; flex-wrap:wrap; }
+  .hero-badges{ list-style:none; margin-top:28px; display:flex; flex-wrap:wrap; gap:10px 22px; }
+  .hero-badges li{ font-size:0.86rem; color:var(--ink-soft); display:flex; align-items:center; gap:8px; }
+  .hero-badges li::before{ content:'✓'; color:var(--copper); font-weight:700; }
+  .contact-note{ margin-top:18px; font-size:0.9rem !important; color:var(--ink-dim) !important; }
   .scroll-cue{
     position:absolute;
     bottom:46px; left:8vw;
@@ -627,6 +631,11 @@
       <a href="#contact" class="btn">Automate my business</a>
       <a href="#automations" class="btn ghost">See what I automate</a>
     </div>
+    <ul class="hero-badges reveal visible d3" aria-label="Working with me">
+      <li>International clients welcome</li>
+      <li>Any shift or time zone</li>
+      <li>Clear English communication</li>
+    </ul>
   </section>
 
   <div class="scroll-cue reveal visible d3"><span class="line"></span>Scroll</div>
@@ -943,15 +952,15 @@
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false" aria-controls="faq-a1"><span>What hours do you work?</span><span class="plus">+</span></button>
-        <div class="faq-a" id="faq-a1" role="region"><p>I keep a flexible schedule and align core hours with each client's timezone — we'll agree on specifics during onboarding.</p></div>
+        <div class="faq-a" id="faq-a1" role="region"><p>Any shift works for me. I work with international clients and can match your business hours, whether you're in the US, UK, Europe, Australia or Asia. We'll agree on the exact schedule during onboarding.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false" aria-controls="faq-a2"><span>Do you work with a minimum commitment?</span><span class="plus">+</span></button>
         <div class="faq-a" id="faq-a2" role="region"><p>Most engagements start with a trial period so we can confirm fit before locking into a longer retainer.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false" aria-controls="faq-a3"><span>How do we communicate day-to-day?</span><span class="plus">+</span></button>
-        <div class="faq-a" id="faq-a3" role="region"><p>Usually Slack or email for async updates, with a short weekly check-in call — happy to adapt to what you already use.</p></div>
+        <button class="faq-q" aria-expanded="false" aria-controls="faq-a3"><span>How do we communicate day-to-day? Will language be a problem?</span><span class="plus">+</span></button>
+        <div class="faq-a" id="faq-a3" role="region"><p>Not at all. I work with clients from different countries and communicate clearly in English, in writing and on calls. Day to day, I usually use Slack or email for updates, with a short weekly check-in call, and I'm happy to adapt to what you already use.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false" aria-controls="faq-a4"><span>Can you handle sensitive or financial data?</span><span class="plus">+</span></button>
@@ -987,6 +996,7 @@
       <div class="eyebrow" style="justify-content:center;">Contact</div>
       <h2>Let's put your busywork on autopilot.</h2>
       <p>Tell me which tasks eat up your week. I'll reply with a simple, no-pressure plan showing what I can take over and what can be automated.</p>
+      <p class="contact-note">Based in Cebu, Philippines (GMT+8) · Working with international clients · Any shift or time zone</p>
       <div class="contact-actions">
         <a href="mailto:geraldjohnt@gmail.com?subject=Automation%20%26%20VA%20enquiry" class="btn">Email me</a>
         <a href="mailto:geraldjohnt@gmail.com?subject=Discovery%20call%20request&amp;body=Hi%20Gerald%2C%0A%0AI%27d%20like%20to%20book%20a%20short%20call.%0A%0AWhat%20I%20need%20help%20with%3A%20%0AMy%20timezone%3A%20%0ATimes%20that%20work%20for%20me%3A%20%0A" class="btn ghost">Book a call</a>
