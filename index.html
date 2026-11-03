@@ -4,7 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gerald John — General Virtual Assistant</title>
+<meta name="description" content="Gerald John, General Virtual Assistant — inbox and calendar management, data entry and research, customer support, project coordination, file organization, and social media support for founders and small teams.">
+<meta name="theme-color" content="#12141A">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gerald John — General Virtual Assistant">
+<meta property="og:description" content="Steady hands on the details. Inboxes, calendars, research, support, and everything in between, handled without drama.">
+<meta property="og:image" content="https://geraldjohnt.github.io/va-portfolio/VA_Portfolio_Screenshots/00-overview-contact-sheet.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2312141A'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial,sans-serif' font-weight='700' font-size='38' fill='%23C97B3D'%3Eg.%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -745,24 +754,24 @@
     </div>
     <div class="faq-list reveal">
       <div class="faq-item">
-        <button class="faq-q"><span>What hours do you work?</span><span class="plus">+</span></button>
-        <div class="faq-a"><p>I keep a flexible schedule and align core hours with each client's timezone — we'll agree on specifics during onboarding.</p></div>
+        <button class="faq-q" aria-expanded="false" aria-controls="faq-a1"><span>What hours do you work?</span><span class="plus">+</span></button>
+        <div class="faq-a" id="faq-a1" role="region"><p>I keep a flexible schedule and align core hours with each client's timezone — we'll agree on specifics during onboarding.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q"><span>Do you work with a minimum commitment?</span><span class="plus">+</span></button>
-        <div class="faq-a"><p>Most engagements start with a trial period so we can confirm fit before locking into a longer retainer.</p></div>
+        <button class="faq-q" aria-expanded="false" aria-controls="faq-a2"><span>Do you work with a minimum commitment?</span><span class="plus">+</span></button>
+        <div class="faq-a" id="faq-a2" role="region"><p>Most engagements start with a trial period so we can confirm fit before locking into a longer retainer.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q"><span>How do we communicate day-to-day?</span><span class="plus">+</span></button>
-        <div class="faq-a"><p>Usually Slack or email for async updates, with a short weekly check-in call — happy to adapt to what you already use.</p></div>
+        <button class="faq-q" aria-expanded="false" aria-controls="faq-a3"><span>How do we communicate day-to-day?</span><span class="plus">+</span></button>
+        <div class="faq-a" id="faq-a3" role="region"><p>Usually Slack or email for async updates, with a short weekly check-in call — happy to adapt to what you already use.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q"><span>Can you handle sensitive or financial data?</span><span class="plus">+</span></button>
-        <div class="faq-a"><p>Yes — I follow standard confidentiality practices and I'm comfortable signing an NDA before we start.</p></div>
+        <button class="faq-q" aria-expanded="false" aria-controls="faq-a4"><span>Can you handle sensitive or financial data?</span><span class="plus">+</span></button>
+        <div class="faq-a" id="faq-a4" role="region"><p>Yes — I follow standard confidentiality practices and I'm comfortable signing an NDA before we start.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q"><span>What industries have you supported?</span><span class="plus">+</span></button>
-        <div class="faq-a"><p>Mainly e-commerce, coaching and consulting, real estate, and logistics — but the core skill set transfers well beyond that.</p></div>
+        <button class="faq-q" aria-expanded="false" aria-controls="faq-a5"><span>What industries have you supported?</span><span class="plus">+</span></button>
+        <div class="faq-a" id="faq-a5" role="region"><p>Mainly e-commerce, coaching and consulting, real estate, and logistics — but the core skill set transfers well beyond that.</p></div>
       </div>
     </div>
   </section>
@@ -786,7 +795,7 @@
 
 </main>
 
-<div class="carousel-modal" id="carouselModal">
+<div class="carousel-modal" id="carouselModal" role="dialog" aria-modal="true" aria-labelledby="carouselTitle" aria-hidden="true">
   <div class="carousel-inner">
     <button class="carousel-close" id="carouselClose" aria-label="Close">&times;</button>
     <div class="carousel-title" id="carouselTitle"></div>
@@ -796,12 +805,12 @@
       <button class="carousel-arrow next" id="carouselNext" aria-label="Next">&#8250;</button>
     </div>
     <div class="carousel-caption" id="carouselCaption"></div>
-    <div class="carousel-counter" id="carouselCounter"></div>
+    <div class="carousel-counter" id="carouselCounter" aria-live="polite"></div>
     <div class="carousel-dots" id="carouselDots"></div>
   </div>
 </div>
 
-<footer>© 2026 Gerald John · General Virtual Assistant · Built with care</footer>
+<footer>© <span id="year">2026</span> Gerald John · General Virtual Assistant · Built with care</footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -821,11 +830,13 @@
     el.style.transitionDelay = (i*0.05) + 's';
   });
 
+  document.getElementById('year').textContent = new Date().getFullYear();
+
   // ---------- Nav background on scroll ----------
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', ()=>{
     nav.classList.toggle('scrolled', window.scrollY > 40);
-  });
+  }, { passive:true });
 
   // ---------- FAQ accordion ----------
   document.querySelectorAll('.faq-item').forEach(item=>{
@@ -836,14 +847,17 @@
       document.querySelectorAll('.faq-item.open').forEach(other=>{
         if(other !== item){
           other.classList.remove('open');
+          other.querySelector('.faq-q').setAttribute('aria-expanded','false');
           other.querySelector('.faq-a').style.maxHeight = null;
         }
       });
       if(isOpen){
         item.classList.remove('open');
+        q.setAttribute('aria-expanded','false');
         a.style.maxHeight = null;
       } else {
         item.classList.add('open');
+        q.setAttribute('aria-expanded','true');
         a.style.maxHeight = a.scrollHeight + 'px';
       }
     });
@@ -926,6 +940,7 @@
 
   let activeImages = [];
   let activeIndex = 0;
+  let lastFocused = null;
 
   function renderSlide(){
     const item = activeImages[activeIndex];
@@ -961,13 +976,18 @@
     carouselTitle.textContent = data.title;
     buildDots();
     renderSlide();
+    lastFocused = document.activeElement;
     carouselModal.classList.add('active');
+    carouselModal.setAttribute('aria-hidden','false');
     document.body.style.overflow = 'hidden';
+    carouselClose.focus();
   }
 
   function closeCarousel(){
     carouselModal.classList.remove('active');
+    carouselModal.setAttribute('aria-hidden','true');
     document.body.style.overflow = '';
+    if(lastFocused && lastFocused.focus) lastFocused.focus();
   }
 
   function nextSlide(){ activeIndex = (activeIndex + 1) % activeImages.length; renderSlide(); }
@@ -994,6 +1014,12 @@
   window.addEventListener('keydown', (e)=>{
     if(!carouselModal.classList.contains('active')) return;
     if(e.key === 'Escape') closeCarousel();
+    if(e.key === 'Tab'){
+      const focusables = carouselModal.querySelectorAll('button');
+      const first = focusables[0], last = focusables[focusables.length-1];
+      if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+      else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+    }
     if(e.key === 'ArrowRight') nextSlide();
     if(e.key === 'ArrowLeft') prevSlide();
   });
@@ -1059,6 +1085,7 @@
       shapes.push(mesh);
     }
 
+    clock = new THREE.Clock();
     animate();
   }
 
@@ -1075,7 +1102,7 @@
     mouseY = (e.clientY / window.innerHeight - 0.5);
   });
 
-  const clock = new THREE.Clock();
+  let clock;
   function animate(){
     requestAnimationFrame(animate);
     const t = clock.getElapsedTime();
@@ -1100,13 +1127,14 @@
   }
 
   window.addEventListener('resize', ()=>{
+    if(!renderer) return;
     camera.aspect = window.innerWidth/window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
   });
 
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(!prefersReduced){
+  if(!prefersReduced && window.THREE){
     initThree();
   } else {
     canvas.style.display = 'none';
