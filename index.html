@@ -471,6 +471,36 @@
   .auto-note{ margin-top:36px; color:var(--ink-soft); font-size:0.98rem; line-height:1.65; max-width:70ch; }
   .auto-note a{ color:var(--copper-light); }
 
+  /* PORTFOLIO SWITCH + DEV CROSS-PROMO */
+  .portfolio-switch{
+    display:inline-flex; align-self:flex-start; gap:4px; padding:4px;
+    margin-bottom:28px; border:1px solid var(--steel); border-radius:999px;
+    background:rgba(30,34,43,0.7); backdrop-filter:blur(8px);
+  }
+  .portfolio-switch a{
+    padding:8px 16px; border-radius:999px; font-size:0.74rem; font-weight:700;
+    letter-spacing:0.08em; text-transform:uppercase; text-decoration:none; color:var(--ink-soft);
+    transition:background .25s ease, color .25s ease;
+  }
+  .portfolio-switch a{ white-space:nowrap; }
+  @media (max-width:420px){ .portfolio-switch a{ padding:8px 12px; font-size:0.68rem; letter-spacing:0.05em; } }
+  .portfolio-switch a[aria-current="page"]{ background:var(--copper); color:#15130F; }
+  .portfolio-switch a:not([aria-current]):hover{ color:var(--copper-light); background:var(--panel-hi); }
+  .nav-links a.nav-external{ color:var(--copper-light); }
+  .dev-promo{
+    display:grid; grid-template-columns:1.2fr 0.8fr; gap:48px; align-items:center;
+    background:var(--panel); border:1px solid var(--steel); border-radius:10px; padding:48px;
+  }
+  @media (max-width:860px){ .dev-promo{ grid-template-columns:1fr; padding:32px 24px; } }
+  .dev-promo h2{ font-size:clamp(1.8rem,3.2vw,2.5rem); margin-bottom:16px; }
+  .dev-promo p{ color:var(--ink-soft); font-size:1rem; line-height:1.7; max-width:58ch; }
+  .dev-promo ul{ list-style:none; display:grid; gap:10px; }
+  .dev-promo li{ padding:12px 16px; border:1px solid var(--line-soft); border-radius:6px; font-size:0.92rem; color:var(--ink); background:var(--bg-alt); }
+  .dev-promo li::before{ content:'›'; color:var(--copper); margin-right:10px; font-weight:700; }
+  .dev-promo .btn{ margin-top:28px; }
+  footer a{ color:var(--copper-light); text-decoration:none; }
+  footer a:hover{ text-decoration:underline; }
+
   /* TOOLKIT */
   .tools-row{ display:flex; flex-wrap:wrap; gap:12px; margin-top:8px; }
   .tool-pill{
@@ -578,6 +608,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#process">Process</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="https://geraldjohnt.github.io/web-developer-portfolio/" class="nav-external">Web Dev &#8599;</a></li>
   </ul>
   <a href="#contact" class="btn ghost" style="padding:11px 24px;">Let's talk</a>
 </nav>
@@ -585,6 +616,10 @@
 <main>
 
   <section class="hero">
+    <div class="portfolio-switch reveal visible" role="navigation" aria-label="Switch portfolio">
+      <a aria-current="page">Virtual Assistant</a>
+      <a href="https://geraldjohnt.github.io/web-developer-portfolio/">Web Developer &#8599;</a>
+    </div>
     <div class="kicker reveal visible">VIRTUAL ASSISTANT &amp; AUTOMATION SPECIALIST</div>
     <h1 class="reveal visible">Your busywork,<br>on <span>autopilot</span>.</h1>
     <p class="reveal visible d1">I'm Gerald John, a virtual assistant who doesn't just do your repetitive tasks — I automate them. I connect the tools you already use so lead follow-ups, client onboarding, invoice reminders and reports run on their own, and I handle everything that still needs a human.</p>
@@ -688,7 +723,7 @@
           <div class="auto-result"><strong>Result:</strong> a consistent posting rhythm, even in your busiest weeks.</div>
         </div>
     </div>
-    <p class="auto-note reveal">Not sure what can be automated in your business? <a href="#contact">Send me a list of your most repetitive tasks</a> and I'll tell you which ones can run on their own — for free.</p>
+    <p class="auto-note reveal">Not sure what can be automated in your business? <a href="#contact">Send me a list of your most repetitive tasks</a> and I'll tell you which ones can run on their own — for free. Need something more custom than Zapier or Make can handle? I'm also a full-stack developer and can <a href="https://geraldjohnt.github.io/web-developer-portfolio/">build it in code</a>.</p>
   </section>
 
   <section id="about">
@@ -929,6 +964,24 @@
     </div>
   </section>
 
+  <section id="development">
+    <div class="dev-promo reveal">
+      <div>
+        <div class="eyebrow">Also available</div>
+        <h2>Need a website or custom software?</h2>
+        <p>I'm also a full-stack web developer. If your business has outgrown spreadsheets and no-code tools, I can build what you need: a website, a client portal, an internal dashboard, or custom integrations between your apps. You work with one person who understands both your day-to-day operations and the code behind them.</p>
+        <a href="https://geraldjohnt.github.io/web-developer-portfolio/" class="btn">View my developer portfolio &#8599;</a>
+      </div>
+      <ul>
+        <li>Business websites &amp; WordPress</li>
+        <li>Web apps &amp; client portals</li>
+        <li>Internal tools &amp; dashboards</li>
+        <li>API integrations &amp; custom automation</li>
+        <li>Maintenance, fixes &amp; troubleshooting</li>
+      </ul>
+    </div>
+  </section>
+
   <section id="contact">
     <div class="contact-wrap reveal">
       <div class="eyebrow" style="justify-content:center;">Contact</div>
@@ -936,12 +989,14 @@
       <p>Tell me which tasks eat up your week. I'll reply with a simple, no-pressure plan showing what I can take over and what can be automated.</p>
       <div class="contact-actions">
         <a href="mailto:geraldjohnt@gmail.com?subject=Automation%20%26%20VA%20enquiry" class="btn">Email me</a>
+        <a href="mailto:geraldjohnt@gmail.com?subject=Discovery%20call%20request&amp;body=Hi%20Gerald%2C%0A%0AI%27d%20like%20to%20book%20a%20short%20call.%0A%0AWhat%20I%20need%20help%20with%3A%20%0AMy%20timezone%3A%20%0ATimes%20that%20work%20for%20me%3A%20%0A" class="btn ghost">Book a call</a>
         <a href="https://www.upwork.com/freelancers/~011ad574500f310d02" class="btn ghost" target="_blank" rel="noopener">Hire me on Upwork</a>
       </div>
       <div class="contact-links">
         <a href="mailto:geraldjohnt@gmail.com">geraldjohnt@gmail.com</a>
         <a href="https://www.linkedin.com/in/gerald-john-tangpos-810341109/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://www.upwork.com/freelancers/~011ad574500f310d02" target="_blank" rel="noopener">Upwork</a>
+        <a href="https://geraldjohnt.github.io/web-developer-portfolio/">Developer portfolio</a>
       </div>
     </div>
   </section>
@@ -963,7 +1018,7 @@
   </div>
 </div>
 
-<footer>© <span id="year">2026</span> Gerald John · Virtual Assistant &amp; Automation Specialist · Built with care</footer>
+<footer>© <span id="year">2026</span> Gerald John · Virtual Assistant &amp; Automation Specialist · Also a <a href="https://geraldjohnt.github.io/web-developer-portfolio/">full-stack web developer</a></footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>

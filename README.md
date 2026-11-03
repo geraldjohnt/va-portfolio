@@ -13,7 +13,8 @@ Open `index.html` in a browser. No build step. The 3D background loads Three.js 
 load (offline, blocked) or the visitor prefers reduced motion, the page still works without it.
 
 ## Customize
-- **Contact links:** email, LinkedIn and Upwork live in the `#contact` section.
+- **Contact links:** email, "Book a call" (opens a pre-filled email), LinkedIn and Upwork live in the `#contact` section.
+- **Developer portfolio links:** the hero switch, nav, `#development` section and footer link to https://geraldjohnt.github.io/web-developer-portfolio/.
 - **Automations:** the example workflows are the `.auto-card` blocks in the `#automations` section.
 - **Testimonials:** replace the placeholder quotes in `#testimonials` with real client feedback.
 - **Work samples:** each service card has three thumbnails in the HTML, and the full set lives in the
