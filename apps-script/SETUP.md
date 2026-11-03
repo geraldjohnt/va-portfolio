@@ -36,6 +36,6 @@ This keeps the same URL, so the sites don't need changing.
 
 - A personal Gmail account can send about 100 emails a day from scripts. Each enquiry uses 2 (auto-reply + notification).
   If the limit is reached, the enquiry is still saved and you're still notified; only the auto-reply is skipped.
-- The same email address can only submit once every 10 minutes (stops double-clicks and simple spam).
+- If the same email address sends again on the same site within 10 minutes, the message is still saved to the Sheet but no emails go out (stops double-clicks and email floods). Each site has its own 10-minute window.
 - Bots that fill the hidden "website" field are silently ignored.
 - To change the reply wording, edit `sendAutoReply_` in `Code.gs`. To change the reply time ("24 hours"), edit `REPLY_WITHIN` at the top.

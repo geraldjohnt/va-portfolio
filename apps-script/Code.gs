@@ -50,10 +50,13 @@ function doPost(e) {
       return json_({ ok: false, error: 'Please enter your name, a valid email address and a short message.' });
     }
 
-    // Stop accidental double-submits and simple floods from the same address.
+    // Repeat sends from the same address on the same site within the cooldown are
+    // still saved to the Sheet, but no emails go out (stops double-clicks and email floods).
+    // Each site has its own cooldown, so one person can contact both sites.
     const cache = CacheService.getScriptCache();
-    const cacheKey = 'sent_' + lead.email;
+    const cacheKey = 'sent_' + lead.source + '_' + lead.email;
     if (cache.get(cacheKey)) {
+      saveLead_(lead, 'No (repeat message within 10 minutes)');
       return json_({ ok: true, duplicate: true });
     }
     cache.put(cacheKey, '1', CONFIG.RESUBMIT_COOLDOWN_SECONDS);
@@ -61,7 +64,7 @@ function doPost(e) {
     // Keep a couple of emails in reserve so you're always notified.
     const canReply = MailApp.getRemainingDailyQuota() >= 2;
 
-    saveLead_(lead, canReply);
+    saveLead_(lead, canReply ? 'Yes' : 'No (daily email limit reached)');
     if (canReply) sendAutoReply_(lead);
     notifyOwner_(lead, canReply);
 
@@ -91,7 +94,7 @@ function testSetup() {
       service: source === 'va' ? 'Automation setup' : 'Website / WordPress',
       message: 'This is a test enquiry created by testSetup().',
     };
-    saveLead_(lead, true);
+    saveLead_(lead, 'Yes');
     sendAutoReply_(lead);
     notifyOwner_(lead, true);
   });
@@ -102,7 +105,7 @@ function testSetup() {
 /* Sheet                                                               */
 /* ------------------------------------------------------------------ */
 
-function saveLead_(lead, autoReplySent) {
+function saveLead_(lead, autoReplyStatus) {
   const lock = LockService.getScriptLock();
   lock.waitLock(10000);
   try {
@@ -115,7 +118,7 @@ function saveLead_(lead, autoReplySent) {
       safeCell_(lead.service),
       safeCell_(lead.message),
       'New',
-      autoReplySent ? 'Yes' : 'No (daily email limit reached)',
+      autoReplyStatus,
     ]);
   } finally {
     lock.releaseLock();
