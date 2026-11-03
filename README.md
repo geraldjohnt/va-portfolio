@@ -19,3 +19,5 @@ load (offline, blocked) or the visitor prefers reduced motion, the page still wo
 - **Testimonials:** replace the placeholder quotes in `#testimonials` with real client feedback.
 - **Work samples:** each service card has three thumbnails in the HTML, and the full set lives in the
   `galleryData` object in the script. Keep the two in sync when adding or renaming screenshots.
+- **Contact form:** `contact-form.js` posts to the Google Apps Script web app set in `data-endpoint` on `#contact-form`.
+  The script and setup guide are in `apps-script/` (see `apps-script/SETUP.md`). With no endpoint set, the form opens a pre-filled email.
