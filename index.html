@@ -549,6 +549,36 @@
   .trial-steps p{ color:var(--ink-soft); font-size:0.92rem; line-height:1.6; }
   .trial-fine{ margin-top:24px; font-size:0.86rem; color:var(--ink-dim); line-height:1.6; }
 
+  /* CONTACT FORM */
+  .contact-form{
+    width:100%; max-width:640px; margin-top:40px; text-align:left;
+    display:grid; grid-template-columns:1fr 1fr; gap:18px;
+    background:var(--panel); border:1px solid var(--steel); border-radius:10px; padding:32px;
+  }
+  @media (max-width:640px){ .contact-form{ grid-template-columns:1fr; padding:24px 18px; } }
+  .contact-form .full{ grid-column:1 / -1; }
+  .contact-form label{ display:block; font-size:0.74rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:8px; }
+  .contact-form input, .contact-form select, .contact-form textarea{
+    width:100%; padding:13px 14px; border-radius:4px; font:inherit; font-size:0.95rem;
+    color:var(--ink); background:var(--bg-alt); border:1px solid var(--steel);
+    transition:border-color .2s ease, box-shadow .2s ease;
+  }
+  .contact-form textarea{ min-height:130px; resize:vertical; }
+  .contact-form select{ appearance:none; background-image:linear-gradient(45deg,transparent 50%,var(--copper) 50%),linear-gradient(135deg,var(--copper) 50%,transparent 50%); background-position:calc(100% - 20px) 55%,calc(100% - 15px) 55%; background-size:5px 5px; background-repeat:no-repeat; padding-right:40px; }
+  .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus{ outline:none; border-color:var(--copper); box-shadow:0 0 0 3px rgba(201,123,61,0.2); }
+  .contact-form .hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+  .contact-form button{ justify-self:start; border:none; cursor:pointer; font-family:inherit; }
+  .contact-form button:disabled{ opacity:.6; cursor:wait; transform:none; }
+  .contact-form .form-foot{ display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+  .contact-form .form-privacy{ margin:0 !important; font-size:0.8rem !important; color:var(--ink-dim) !important; max-width:34ch !important; }
+  .form-status{ margin:0 !important; max-width:none !important; font-size:0.92rem !important; }
+  .form-status:empty{ display:none; }
+  .form-status.success{ color:#7fd1a4 !important; }
+  .form-status.error{ color:#ef8f7a !important; }
+  .form-status a{ color:var(--copper-light); }
+  .contact-alt{ margin-top:34px !important; font-size:0.85rem !important; letter-spacing:0.06em; text-transform:uppercase !important; color:var(--ink-dim) !important; }
+  .contact-alt + .contact-actions{ margin-top:16px; }
+
   /* TOOLKIT */
   .tools-row{ display:flex; flex-wrap:wrap; gap:12px; margin-top:8px; }
   .tool-pill{
@@ -1064,8 +1094,44 @@
       <h2>Let's put your busywork on autopilot.</h2>
       <p>Tell me which tasks eat up your week. I'll reply with a simple, no-pressure plan showing what I can take over and what can be automated.</p>
       <p class="contact-note">Based in Cebu, Philippines (GMT+8) · Working with international clients · Any shift or time zone</p>
+      <form class="contact-form" id="contact-form" data-endpoint="" data-email="geraldjohnt@gmail.com" novalidate>
+        <input type="hidden" name="source" value="va">
+        <div class="hp" aria-hidden="true"><label for="cf-website">Leave this empty</label><input type="text" id="cf-website" name="website" tabindex="-1" autocomplete="off"></div>
+        <div>
+          <label for="cf-name">Your name</label>
+          <input type="text" id="cf-name" name="name" required maxlength="100" autocomplete="name">
+        </div>
+        <div>
+          <label for="cf-email">Email</label>
+          <input type="email" id="cf-email" name="email" required maxlength="200" autocomplete="email">
+        </div>
+        <div class="full">
+          <label for="cf-service">What do you need help with?</label>
+          <select id="cf-service" name="service">
+            <option>Automation setup</option>
+            <option>Calendar &amp; email management</option>
+            <option>Data entry &amp; research</option>
+            <option>Customer support</option>
+            <option>Project coordination</option>
+            <option>Document &amp; file organization</option>
+            <option>Social media support</option>
+            <option>Free trial task</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="full">
+          <label for="cf-message">Message</label>
+          <textarea id="cf-message" name="message" required minlength="5" maxlength="5000" placeholder="Which tasks take up most of your week? Which tools do you use?"></textarea>
+        </div>
+        <div class="full form-foot">
+          <button type="submit" class="btn">Send message</button>
+          <p class="form-privacy">You'll get an instant confirmation email (one of my own automations). Your details are only used to reply to you.</p>
+        </div>
+        <p class="form-status full" role="status" aria-live="polite"></p>
+      </form>
+      <p class="contact-alt">Or reach me directly</p>
       <div class="contact-actions">
-        <a href="mailto:geraldjohnt@gmail.com?subject=Automation%20%26%20VA%20enquiry" class="btn">Email me</a>
+        <a href="mailto:geraldjohnt@gmail.com?subject=Automation%20%26%20VA%20enquiry" class="btn ghost">Email me</a>
         <a href="mailto:geraldjohnt@gmail.com?subject=Discovery%20call%20request&amp;body=Hi%20Gerald%2C%0A%0AI%27d%20like%20to%20book%20a%20short%20call.%0A%0AWhat%20I%20need%20help%20with%3A%20%0AMy%20timezone%3A%20%0ATimes%20that%20work%20for%20me%3A%20%0A" class="btn ghost">Book a call</a>
         <a href="mailto:geraldjohnt@gmail.com?subject=Free%20trial%20task%20request&amp;body=Hi%20Gerald%2C%0A%0AI%27d%20like%20to%20try%20your%20free%20trial%20task.%0A%0AThe%20task%3A%20%0AWhat%20a%20good%20result%20looks%20like%3A%20%0ATools%20I%20use%3A%20%0AMy%20timezone%3A%20%0A" class="btn ghost">Free trial task</a>
         <a href="https://www.upwork.com/freelancers/~011ad574500f310d02" class="btn ghost" target="_blank" rel="noopener">Hire me on Upwork</a>
@@ -1098,6 +1164,7 @@
 
 <footer>© <span id="year">2026</span> Gerald John · Virtual Assistant &amp; Automation Specialist · Also a <a href="https://geraldjohnt.github.io/web-developer-portfolio/">full-stack web developer</a></footer>
 
+<script src="contact-form.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
   // ---------- Reveal on scroll (toggles both ways: appears scrolling down, hides scrolling up) ----------
