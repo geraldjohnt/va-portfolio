@@ -204,6 +204,10 @@
     font-weight:400;
   }
   .hero-actions{ margin-top:44px; display:flex; gap:16px; flex-wrap:wrap; }
+  .hero-badges{ list-style:none; margin-top:28px; display:flex; flex-wrap:wrap; gap:10px 22px; }
+  .hero-badges li{ font-size:0.86rem; color:var(--ink-soft); display:flex; align-items:center; gap:8px; }
+  .hero-badges li::before{ content:'✓'; color:var(--copper); font-weight:700; }
+  .contact-note{ margin-top:18px; font-size:0.9rem !important; color:var(--ink-dim) !important; }
   .scroll-cue{
     position:absolute;
     bottom:46px; left:8vw;
@@ -501,6 +505,23 @@
   footer a{ color:var(--copper-light); text-decoration:none; }
   footer a:hover{ text-decoration:underline; }
 
+  /* FREE TRIAL */
+  .trial{
+    background:linear-gradient(135deg, rgba(201,123,61,0.14), rgba(30,34,43,0.9) 55%);
+    border:1px solid var(--copper); border-radius:10px; padding:48px;
+  }
+  @media (max-width:760px){ .trial{ padding:32px 22px; } }
+  .trial-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:32px; flex-wrap:wrap; margin-bottom:36px; }
+  .trial-head h2{ font-size:clamp(1.9rem,3.4vw,2.7rem); }
+  .trial-head p{ margin-top:14px; color:var(--ink-soft); max-width:58ch; line-height:1.65; }
+  .trial-steps{ list-style:none; display:grid; grid-template-columns:repeat(3,1fr); gap:16px; counter-reset:t; }
+  @media (max-width:860px){ .trial-steps{ grid-template-columns:1fr; } }
+  .trial-steps li{ counter-increment:t; background:var(--bg-alt); border:1px solid var(--line-soft); border-radius:8px; padding:22px; }
+  .trial-steps li::before{ content:'0' counter(t); display:block; font-family:'Oswald'; color:var(--copper-light); font-size:1.1rem; margin-bottom:10px; }
+  .trial-steps h3{ font-size:1rem; margin-bottom:6px; }
+  .trial-steps p{ color:var(--ink-soft); font-size:0.92rem; line-height:1.6; }
+  .trial-fine{ margin-top:24px; font-size:0.86rem; color:var(--ink-dim); line-height:1.6; }
+
   /* TOOLKIT */
   .tools-row{ display:flex; flex-wrap:wrap; gap:12px; margin-top:8px; }
   .tool-pill{
@@ -627,6 +648,12 @@
       <a href="#contact" class="btn">Automate my business</a>
       <a href="#automations" class="btn ghost">See what I automate</a>
     </div>
+    <ul class="hero-badges reveal visible d3" aria-label="Working with me">
+      <li>International clients welcome</li>
+      <li>Any shift or time zone</li>
+      <li>Clear English communication</li>
+      <li><a href="#trial" style="color:inherit">Free trial task</a></li>
+    </ul>
   </section>
 
   <div class="scroll-cue reveal visible d3"><span class="line"></span>Scroll</div>
@@ -900,6 +927,25 @@
     </div>
   </section>
 
+  <section id="trial">
+    <div class="trial reveal">
+      <div class="trial-head">
+        <div>
+          <div class="eyebrow">Free trial</div>
+          <h2>Try me first. It's free.</h2>
+          <p>Before you hire me, give me one real task from your business. You'll see my speed, accuracy and communication on your own work, with no payment and no commitment.</p>
+        </div>
+        <a href="mailto:geraldjohnt@gmail.com?subject=Free%20trial%20task%20request&amp;body=Hi%20Gerald%2C%0A%0AI%27d%20like%20to%20try%20your%20free%20trial%20task.%0A%0AThe%20task%3A%20%0AWhat%20a%20good%20result%20looks%20like%3A%20%0ATools%20I%20use%3A%20%0AMy%20timezone%3A%20%0A" class="btn">Request a free trial task</a>
+      </div>
+      <ol class="trial-steps">
+        <li><h3>Send one task</h3><p>For example: clean up a spreadsheet, research 20 leads, sort an inbox, or map out one automation.</p></li>
+        <li><h3>I deliver in 24–48 hours</h3><p>You get the finished work plus a short note on how I did it and what I'd improve.</p></li>
+        <li><h3>You decide</h3><p>Happy with it? We start working together. Not a fit? No charge, no hard feelings.</p></li>
+      </ol>
+      <p class="trial-fine">One trial task per business, up to 2 hours of work. Happy to sign an NDA first, or you can share sample data instead of real records.</p>
+    </div>
+  </section>
+
   <section id="testimonials" class="section-alt">
     <div>
       <div class="section-head reveal">
@@ -943,15 +989,15 @@
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false" aria-controls="faq-a1"><span>What hours do you work?</span><span class="plus">+</span></button>
-        <div class="faq-a" id="faq-a1" role="region"><p>I keep a flexible schedule and align core hours with each client's timezone — we'll agree on specifics during onboarding.</p></div>
+        <div class="faq-a" id="faq-a1" role="region"><p>Any shift works for me. I work with international clients and can match your business hours, whether you're in the US, UK, Europe, Australia or Asia. We'll agree on the exact schedule during onboarding.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false" aria-controls="faq-a2"><span>Do you work with a minimum commitment?</span><span class="plus">+</span></button>
-        <div class="faq-a" id="faq-a2" role="region"><p>Most engagements start with a trial period so we can confirm fit before locking into a longer retainer.</p></div>
+        <div class="faq-a" id="faq-a2" role="region"><p>No. You can start with a <a href="#trial" style="color:var(--copper-light)">free trial task</a> to see my work first, then choose hourly or a monthly retainer. No long lock-in.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false" aria-controls="faq-a3"><span>How do we communicate day-to-day?</span><span class="plus">+</span></button>
-        <div class="faq-a" id="faq-a3" role="region"><p>Usually Slack or email for async updates, with a short weekly check-in call — happy to adapt to what you already use.</p></div>
+        <button class="faq-q" aria-expanded="false" aria-controls="faq-a3"><span>How do we communicate day-to-day? Will language be a problem?</span><span class="plus">+</span></button>
+        <div class="faq-a" id="faq-a3" role="region"><p>Not at all. I work with clients from different countries and communicate clearly in English, in writing and on calls. Day to day, I usually use Slack or email for updates, with a short weekly check-in call, and I'm happy to adapt to what you already use.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false" aria-controls="faq-a4"><span>Can you handle sensitive or financial data?</span><span class="plus">+</span></button>
@@ -987,9 +1033,11 @@
       <div class="eyebrow" style="justify-content:center;">Contact</div>
       <h2>Let's put your busywork on autopilot.</h2>
       <p>Tell me which tasks eat up your week. I'll reply with a simple, no-pressure plan showing what I can take over and what can be automated.</p>
+      <p class="contact-note">Based in Cebu, Philippines (GMT+8) · Working with international clients · Any shift or time zone</p>
       <div class="contact-actions">
         <a href="mailto:geraldjohnt@gmail.com?subject=Automation%20%26%20VA%20enquiry" class="btn">Email me</a>
         <a href="mailto:geraldjohnt@gmail.com?subject=Discovery%20call%20request&amp;body=Hi%20Gerald%2C%0A%0AI%27d%20like%20to%20book%20a%20short%20call.%0A%0AWhat%20I%20need%20help%20with%3A%20%0AMy%20timezone%3A%20%0ATimes%20that%20work%20for%20me%3A%20%0A" class="btn ghost">Book a call</a>
+        <a href="mailto:geraldjohnt@gmail.com?subject=Free%20trial%20task%20request&amp;body=Hi%20Gerald%2C%0A%0AI%27d%20like%20to%20try%20your%20free%20trial%20task.%0A%0AThe%20task%3A%20%0AWhat%20a%20good%20result%20looks%20like%3A%20%0ATools%20I%20use%3A%20%0AMy%20timezone%3A%20%0A" class="btn ghost">Free trial task</a>
         <a href="https://www.upwork.com/freelancers/~011ad574500f310d02" class="btn ghost" target="_blank" rel="noopener">Hire me on Upwork</a>
       </div>
       <div class="contact-links">
