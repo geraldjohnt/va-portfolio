@@ -21,8 +21,6 @@ const CONFIG = {
   DEV_URL: 'https://geraldjohnt.github.io/web-developer-portfolio/',
   UPWORK_URL: 'https://www.upwork.com/freelancers/~011ad574500f310d02',
   REPLY_WITHIN: '24 hours',
-  // The same email address can only submit once every 10 minutes.
-  RESUBMIT_COOLDOWN_SECONDS: 600,
 };
 
 const HEADERS = ['Date', 'Portfolio', 'Name', 'Email', 'Needs help with', 'Message', 'Status', 'Auto-reply sent'];
@@ -50,21 +48,26 @@ function doPost(e) {
       return json_({ ok: false, error: 'Please enter your name, a valid email address and a short message.' });
     }
 
-    // Repeat sends from the same address on the same site within the cooldown are
-    // still saved to the Sheet, but no emails go out (stops double-clicks and email floods).
-    // Each site has its own cooldown, so one person can contact both sites.
-    const cache = CacheService.getScriptCache();
-    const cacheKey = 'sent_' + lead.source + '_' + lead.email;
-    if (cache.get(cacheKey)) {
-      saveLead_(lead, 'No (repeat message within 10 minutes)');
-      return json_({ ok: true, duplicate: true });
+    // One message per email address per site. The same person can still use both
+    // the VA and the developer form, but not the same form twice.
+    const lock = LockService.getScriptLock();
+    lock.waitLock(10000);
+    let canReply;
+    try {
+      if (alreadySent_(lead)) {
+        return json_({
+          ok: false,
+          duplicate: true,
+          error: 'You\'ve already sent a message from this site with this email address, and I\'ll reply soon. Need to add something?',
+        });
+      }
+      // Keep a couple of emails in reserve so you're always notified.
+      canReply = MailApp.getRemainingDailyQuota() >= 2;
+      saveLead_(lead, canReply ? 'Yes' : 'No (daily email limit reached)');
+    } finally {
+      lock.releaseLock();
     }
-    cache.put(cacheKey, '1', CONFIG.RESUBMIT_COOLDOWN_SECONDS);
 
-    // Keep a couple of emails in reserve so you're always notified.
-    const canReply = MailApp.getRemainingDailyQuota() >= 2;
-
-    saveLead_(lead, canReply ? 'Yes' : 'No (daily email limit reached)');
     if (canReply) sendAutoReply_(lead);
     notifyOwner_(lead, canReply);
 
@@ -105,24 +108,34 @@ function testSetup() {
 /* Sheet                                                               */
 /* ------------------------------------------------------------------ */
 
+function portfolioLabel_(source) {
+  return source === 'dev' ? 'Web Developer' : 'Virtual Assistant';
+}
+
+// True if this email address already has a row for this portfolio.
+function alreadySent_(lead) {
+  const sheet = getSheet_();
+  const rows = sheet.getLastRow() - 1;
+  if (rows < 1) return false;
+  const label = portfolioLabel_(lead.source);
+  const values = sheet.getRange(2, 2, rows, 3).getValues(); // Portfolio, Name, Email
+  return values.some(function (r) {
+    return r[0] === label && String(r[2]).replace(/^'/, '').trim().toLowerCase() === lead.email;
+  });
+}
+
 function saveLead_(lead, autoReplyStatus) {
-  const lock = LockService.getScriptLock();
-  lock.waitLock(10000);
-  try {
-    const sheet = getSheet_();
-    sheet.appendRow([
-      new Date(),
-      lead.source === 'dev' ? 'Web Developer' : 'Virtual Assistant',
-      safeCell_(lead.name),
-      safeCell_(lead.email),
-      safeCell_(lead.service),
-      safeCell_(lead.message),
-      'New',
-      autoReplyStatus,
-    ]);
-  } finally {
-    lock.releaseLock();
-  }
+  const sheet = getSheet_();
+  sheet.appendRow([
+    new Date(),
+    portfolioLabel_(lead.source),
+    safeCell_(lead.name),
+    safeCell_(lead.email),
+    safeCell_(lead.service),
+    safeCell_(lead.message),
+    'New',
+    autoReplyStatus,
+  ]);
 }
 
 function getSheet_() {

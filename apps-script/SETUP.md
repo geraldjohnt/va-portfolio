@@ -36,6 +36,7 @@ This keeps the same URL, so the sites don't need changing.
 
 - A personal Gmail account can send about 100 emails a day from scripts. Each enquiry uses 2 (auto-reply + notification).
   If the limit is reached, the enquiry is still saved and you're still notified; only the auto-reply is skipped.
-- If the same email address sends again on the same site within 10 minutes, the message is still saved to the Sheet but no emails go out (stops double-clicks and email floods). Each site has its own 10-minute window.
+- Each email address can send **one message per site**. The same person can use both the VA and the developer form, but a second message from the same form is refused with a note asking them to email you directly. To let someone send again, delete their row from the Leads tab.
+- `testSetup()` adds rows for geraldjohnt@gmail.com on both sites. Delete those test rows before testing the live forms with that address.
 - Bots that fill the hidden "website" field are silently ignored.
 - To change the reply wording, edit `sendAutoReply_` in `Code.gs`. To change the reply time ("24 hours"), edit `REPLY_WITHIN` at the top.
