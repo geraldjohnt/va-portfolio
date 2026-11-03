@@ -1,22 +1,19 @@
-# Mira Voss — Portfolio
+# Gerald John — General Virtual Assistant Portfolio
 
-A one-page portfolio with a layered 3D parallax scroll, built in plain HTML/CSS/JS (no external animation library required).
+A single-page portfolio site for a General Virtual Assistant, built in plain HTML, CSS and JavaScript.
 
 ## Files
-- `index.html` — page structure (hero, about, work, skills, contact, footer)
-- `style.css` — design system (dark theme, teal accents, Montserrat/Open Sans, responsive breakpoints)
-- `script.js` — scroll-driven parallax engine, gallery rendering, contact form validation
+- `index.html` — the whole site: markup, styles (in `<style>`) and scripts (in `<script>`)
+- `profile.jpg` — portrait used in the About section
+- `VA_Portfolio_Screenshots/` — work samples shown in each service card's gallery/carousel
+- `.github/workflows/static.yml` — deploys the site to GitHub Pages on every push to `main`
 
 ## Run it
-Just open `index.html` in a browser — no build step, no dependencies.
+Open `index.html` in a browser. No build step. The 3D background loads Three.js from cdnjs; if it can't
+load (offline, blocked) or the visitor prefers reduced motion, the page still works without it.
 
 ## Customize
-- Edit the `projects` array at the top of `script.js` to swap in real project thumbnails/links.
-- Adjust `data-speed` attributes in `index.html` to change how fast each layer moves.
-- Wire up the commented `fetch()` call in `script.js`'s contact form handler to a real backend/email service.
-
-## Why no ScrollMagic/LocomotiveScroll
-The parallax is done with a single `scroll` listener + `requestAnimationFrame` reading each element's
-`data-speed`, which keeps the site dependency-free and avoids library version/CDN issues. It's swappable
-for LocomotiveScroll later if you want smoothed/inertia scrolling — the `data-speed` markup is compatible
-with that migration.
+- **Contact links:** update the `mailto:` address and the `Book a call`, LinkedIn, Upwork and Instagram links in the `#contact` section.
+- **Testimonials:** replace the placeholder quotes in `#testimonials` with real client feedback.
+- **Work samples:** each service card has three thumbnails in the HTML, and the full set lives in the
+  `galleryData` object in the script. Keep the two in sync when adding or renaming screenshots.
