@@ -1,6 +1,6 @@
-# Gerald John — General Virtual Assistant Portfolio
+# Gerald John — Virtual Assistant & Automation Specialist Portfolio
 
-A single-page portfolio site for a General Virtual Assistant, built in plain HTML, CSS and JavaScript.
+A single-page portfolio site for a Virtual Assistant & Automation Specialist, built in plain HTML, CSS and JavaScript.
 
 ## Files
 - `index.html` — the whole site: markup, styles (in `<style>`) and scripts (in `<script>`)
@@ -13,7 +13,9 @@ Open `index.html` in a browser. No build step. The 3D background loads Three.js 
 load (offline, blocked) or the visitor prefers reduced motion, the page still works without it.
 
 ## Customize
-- **Contact links:** update the `mailto:` address and the `Book a call`, LinkedIn, Upwork and Instagram links in the `#contact` section.
+- **Contact links:** email, "Book a call" (opens a pre-filled email), LinkedIn and Upwork live in the `#contact` section.
+- **Developer portfolio links:** the hero switch, nav, `#development` section and footer link to https://geraldjohnt.github.io/web-developer-portfolio/.
+- **Automations:** the example workflows are the `.auto-card` blocks in the `#automations` section.
 - **Testimonials:** replace the placeholder quotes in `#testimonials` with real client feedback.
 - **Work samples:** each service card has three thumbnails in the HTML, and the full set lives in the
   `galleryData` object in the script. Keep the two in sync when adding or renaming screenshots.
