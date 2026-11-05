@@ -190,6 +190,18 @@
     return { el: el, idx: idx, hero: el.hasAttribute('data-t'), t: +(el.getAttribute('data-t') || 0), queued: false, done: false, tasks: [], left: 0, visible: false };
   });
   var regionByEl = new Map(); regions.forEach(function (r) { regionByEl.set(r.el, r); });
+  // Containers that hold buildable regions (the stats strip, the timeline rail) keep their own
+  // background, borders and decorations hidden until everything inside them is built.
+  var holders = new Map();
+  regions.forEach(function (reg) {
+    reg.holders = [];
+    for (var a = reg.el.parentElement; a && !a.matches('body,main,section,header,footer'); a = a.parentElement) {
+      if (!holders.has(a)) holders.set(a, hasBox(getComputedStyle(a)) || hasDeco(a) ? { el: a, regs: [] } : null);
+      var hd = holders.get(a);
+      if (hd) { hd.regs.push(reg); reg.holders.push(hd); }
+    }
+  });
+  holders.forEach(function (hd) { if (hd) hd.el.classList.add('bxw'); });
   var queue = [];          // tasks waiting for a robot, in build order
   var working = [];        // tasks with robots on them
   var leaves = new Map();  // element -> leaf (mask state)
@@ -201,6 +213,13 @@
     if (alpha(cs.backgroundColor) > 0.03 || cs.backgroundImage !== 'none') return true;
     var sides = ['Top', 'Right', 'Bottom', 'Left'];
     for (var s = 0; s < 4; s++) if (parseFloat(cs['border' + sides[s] + 'Width']) > 0 && alpha(cs['border' + sides[s] + 'Color']) > 0.05) return true;
+    return false;
+  }
+  function hasDeco(el) {
+    for (var i = 0; i < 2; i++) {
+      var ps = getComputedStyle(el, i ? '::after' : '::before');
+      if (ps.content && ps.content !== 'none' && ps.content !== 'normal' && ps.display !== 'none' && hasBox(ps)) return true;
+    }
     return false;
   }
   function directText(el) {
@@ -221,7 +240,7 @@
       if (compact && (own || direct || el.children.length)) { units.push({ kind: 'atom', el: el, dir: 'x' }); return; }
       if (direct) { units.push({ kind: own || cs.display.indexOf('inline') === 0 ? 'atom' : 'text', el: el, dir: 'x' }); return; }
       if (!el.children.length) { if (own) units.push({ kind: 'atom', el: el, dir: 'x' }); return; }
-      if (own) units.push({ kind: 'box', el: el });
+      if (own || hasDeco(el)) units.push({ kind: 'box', el: el });
       for (var c = el.firstElementChild; c; c = c.nextElementSibling) walk(c);
     })(regionEl);
     return units;
@@ -246,7 +265,7 @@
     return bands;
   }
 
-  var GHOST = 'rgba(0,0,0,.1)';
+  var GHOST = 'transparent';   // unbuilt content is fully invisible
   function setMask(el, img, pos, size) {
     el.style.webkitMaskImage = img; el.style.maskImage = img;
     el.style.webkitMaskPosition = pos || ''; el.style.maskPosition = pos || '';
@@ -299,7 +318,7 @@
     if (reg.queued) return;
     reg.queued = true;
     var tasks = makeTasks(reg);
-    reg.el.classList.remove('unbuilt');
+    reg.el.classList.remove('unbuilt'); reg.el.classList.add('released');
     reg.tasks = tasks; reg.left = tasks.length;
     totalTasks += tasks.length;
     if (!tasks.length) return regionDone(reg);
@@ -336,16 +355,16 @@
     var r = t.rect;
     if (t.kind === 'line') {
       var b = t.leaf.bands[t.band], L = r.left + b.x, T = r.top + b.y;
-      out.fx = L + b.w * t.p; out.fy = T + b.h / 2; out.x = out.fx; out.y = T - 6; out.len = b.w;
-      out.x0 = L; out.y0 = T - 6;
+      out.fx = L + b.w * t.p; out.fy = T + b.h / 2; out.x = out.fx + 8; out.y = out.fy; out.len = b.w;
+      out.x0 = L + 8; out.y0 = out.fy;
     } else if (t.kind === 'atom') {
       if (t.leaf.dir === 'up') {
         var fy = r.bottom - r.height * t.p;
         out.fx = r.left + r.width * (0.5 + 0.45 * Math.sin(performance.now() / 140)); out.fy = fy;
-        out.x = out.fx; out.y = fy - 10; out.len = r.height; out.x0 = r.left + r.width / 2; out.y0 = r.bottom - 10;
+        out.x = out.fx; out.y = fy - 6; out.len = r.height; out.x0 = r.left + r.width / 2; out.y0 = r.bottom - 6;
       } else {
         out.fx = r.left + r.width * t.p; out.fy = r.top + r.height / 2;
-        out.x = out.fx; out.y = r.height > 40 ? r.top - 6 : r.top - 6; out.len = r.width; out.x0 = r.left; out.y0 = r.top - 6;
+        out.x = out.fx + 8; out.y = r.height > 48 ? r.top + 10 : out.fy; out.len = r.width; out.x0 = r.left + 8; out.y0 = out.y;
       }
     } else if (t.kind === 'box') {
       var per = 2 * (r.width + r.height), d = per * t.p, x, y;
@@ -353,7 +372,7 @@
       else if (d <= r.width + r.height) { x = r.right; y = r.top + (d - r.width); }
       else if (d <= 2 * r.width + r.height) { x = r.right - (d - r.width - r.height); y = r.bottom; }
       else { x = r.left; y = r.bottom - (d - 2 * r.width - r.height); }
-      out.fx = x; out.fy = y; out.x = x; out.y = y - 9; out.len = per; out.x0 = r.left; out.y0 = r.top - 9;
+      out.fx = x; out.fy = y; out.x = x; out.y = y; out.len = per; out.x0 = r.left; out.y0 = r.top;
     }
     return out;
   }
@@ -436,8 +455,11 @@
   function regionDone(reg) {
     if (reg.done) return;
     reg.done = true;
-    reg.el.classList.remove('unbuilt'); reg.el.style.opacity = '';
+    reg.el.classList.remove('unbuilt'); reg.el.classList.add('released'); reg.el.style.opacity = '';
     emitBuilt(reg.el);
+    reg.holders.forEach(function (hd) {
+      if (hd.el.classList.contains('bxw') && hd.regs.every(function (r) { return r.done; })) { hd.el.classList.remove('bxw'); flash(hd.el); }
+    });
   }
   function finishRegion(reg) {
     if (!reg.queued) release(reg);
@@ -489,7 +511,7 @@
         b.vx = (G.x - b.x) / Math.max(dt, 0.001); b.vy = 0;
         b.x = G.x; b.y = G.y + bob;
         b.wx = G.fx; b.wy = G.fy;
-        if (Math.random() < 0.5) spark(G.fx, G.fy);
+        if (Math.random() < 0.3) spark(G.fx, G.fy);
         if (t.kind !== 'box') Sound.weld();
         if (t.p >= 1) taskDone(t);
       }
@@ -522,9 +544,9 @@
       t.el.style.transform = 'translate3d(' + (t.off.x * e).toFixed(1) + 'px,' + (t.off.y * e).toFixed(1) + 'px,0)';
     }
     var cr = t.el.getBoundingClientRect();
-    if (t.mode === 'pull-right') { b.x = cr.left - 18; b.y = cr.top + f * cr.height; b.wx = cr.left; b.wy = b.y; }
-    else if (t.mode === 'pull-left') { b.x = cr.right + 18; b.y = cr.top + f * cr.height; b.wx = cr.right; b.wy = b.y; }
-    else { b.x = cr.left + f * cr.width; b.y = cr.top - 18; b.wx = b.x; b.wy = cr.top; }
+    if (t.mode === 'pull-right') { b.x = cr.left - 9; b.y = cr.top + f * cr.height; b.wx = cr.left; b.wy = b.y; }
+    else if (t.mode === 'pull-left') { b.x = cr.right + 9; b.y = cr.top + f * cr.height; b.wx = cr.right; b.wy = b.y; }
+    else { b.x = cr.left + f * cr.width; b.y = cr.top - 9; b.wx = b.x; b.wy = cr.top; }
     b.vx = t.mode === 'pull-right' ? -400 : t.mode === 'pull-left' ? 400 : 0;
     if (b.crewIdx === 0 && t.p >= 1) taskDone(t);
   }
@@ -533,7 +555,7 @@
   var sparks = [];
   function spark(x, y) {
     if (sparks.length > 200) return;
-    sparks.push({ x: x, y: y, vx: (Math.random() - 0.5) * 200, vy: -Math.random() * 150 - 20, life: 0.3 + Math.random() * 0.3, t: 0, c: Math.random() < 0.6 });
+    sparks.push({ x: x, y: y, vx: (Math.random() - 0.5) * 90, vy: -Math.random() * 70 - 10, life: 0.3 + Math.random() * 0.3, t: 0, c: Math.random() < 0.6 });
   }
   function stepSparks(dt) {
     for (var k = sparks.length - 1; k >= 0; k--) {
@@ -563,21 +585,6 @@
     ctx.moveTo(r.left, r.top + c); ctx.lineTo(r.left, r.top); ctx.lineTo(r.left + c, r.top);
     ctx.moveTo(r.right - c, r.bottom); ctx.lineTo(r.right, r.bottom); ctx.lineTo(r.right, r.bottom - c);
     ctx.stroke();
-  }
-  function drawBlueprints(now) {
-    // regions not released yet
-    regions.forEach(function (reg) {
-      if (reg.queued || !reg.visible || reg.el.hasAttribute('data-mode')) return;
-      var r = reg.el.getBoundingClientRect();
-      if (r.bottom < 0 || r.top > H) return;
-      dashed(r, 0.14, now);
-    });
-    // boxes waiting for a robot
-    for (var q = 0, n = 0; q < queue.length && n < 60; q++) {
-      var t = queue[q]; if (t.kind !== 'box' || !t.region.visible) continue;
-      var r = t.el.getBoundingClientRect(); if (r.bottom < 0 || r.top > H) continue;
-      n++; dashed(r, 0.16, now);
-    }
   }
   function drawWork(now) {
     ctx.globalCompositeOperation = 'lighter';
@@ -612,27 +619,10 @@
         ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
       }
     }
-    // beams and tow cables
-    for (var k = 0; k < bots.length; k++) {
-      var b = bots[k], tk = b.task;
-      if (!tk || b.wx == null) continue;
-      if (tk.kind === 'tow') {
-        if (tk.state !== 'towing') continue;
-        ctx.strokeStyle = 'rgba(' + COP + ',0.8)'; ctx.lineWidth = 1;
-        ctx.setLineDash([3, 3]); ctx.lineDashOffset = -now / 30;
-        ctx.beginPath(); ctx.moveTo(b.x, b.y); ctx.lineTo(b.wx, b.wy); ctx.stroke(); ctx.setLineDash([]);
-      } else if (b.state === 'work' && Math.random() > 0.2) {
-        ctx.strokeStyle = 'rgba(' + ARC + ',0.85)'; ctx.lineWidth = 1;
-        ctx.beginPath(); ctx.moveTo(b.x, b.y + 4); ctx.lineTo(b.wx + (Math.random() - 0.5) * 3, b.wy + (Math.random() - 0.5) * 3); ctx.stroke();
-        ctx.fillStyle = 'rgba(255,255,255,0.9)';
-        ctx.beginPath(); ctx.arc(b.wx, b.wy, 1.4 + Math.random() * 1.2, 0, 6.283); ctx.fill();
-      }
-    }
     for (var p = 0; p < sparks.length; p++) {
       var sp = sparks[p], a = 1 - sp.t / sp.life;
-      ctx.strokeStyle = sp.c ? 'rgba(' + COP + ',' + a + ')' : 'rgba(255,255,255,' + a + ')';
-      ctx.lineWidth = 1.1;
-      ctx.beginPath(); ctx.moveTo(sp.x, sp.y); ctx.lineTo(sp.x - sp.vx * 0.02, sp.y - sp.vy * 0.02); ctx.stroke();
+      ctx.fillStyle = sp.c ? 'rgba(' + COP + ',' + a + ')' : 'rgba(255,255,255,' + a + ')';
+      ctx.fillRect(sp.x - 0.9, sp.y - 0.9, 1.8, 1.8);
     }
     ctx.globalCompositeOperation = 'source-over';
   }
@@ -750,7 +740,7 @@
       reg.visible = en.isIntersecting;
       if (en.isIntersecting && !reg.hero) release(reg);
     });
-  }, { rootMargin: '0px 0px -6% 0px', threshold: 0 });
+  }, { rootMargin: '0px', threshold: 0 });
   regions.forEach(function (reg) { io.observe(reg.el); });
 
   document.addEventListener('focusin', function (e) {
@@ -782,7 +772,6 @@
     stepSparks(dt);
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
     ctx.clearRect(0, 0, W, H);
-    drawBlueprints(now);
     drawWork(now);
     drawDock(now);
     for (var k = 0; k < bots.length; k++) drawBot(bots[k], now);
