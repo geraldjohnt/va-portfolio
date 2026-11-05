@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Gerald John — Virtual Assistant &amp; Automation Specialist</title>
+<meta name="description" content="Gerald John is a virtual assistant who automates the repetitive work: lead follow-ups, client onboarding, invoice reminders and reports that run on their own.">
+<meta name="theme-color" content="#070A0F">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="preload" as="image" href="v2/gerald-cutout.webp">
+<link rel="stylesheet" href="v2/v2.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<canvas id="bots" aria-hidden="true"></canvas>
+<div class="grid-bg" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner" data-build data-t="250" data-d="700" data-crew="4">
+    <a class="brand" href="#top">gerald john<span>.</span></a>
+    <nav id="nav-menu" aria-label="Main">
+      <a href="#automations">Automations</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+      <a href="https://geraldjohnt.github.io/web-developer-portfolio/" class="ext">Web Dev &#8599;</a>
+    </nav>
+    <div class="nav-right">
+      <button type="button" class="sound-btn" id="sound-btn" aria-pressed="true" title="Robot sounds"><span class="sound-ico" aria-hidden="true"><i></i><i></i><i></i></span><span class="sound-lbl">Sound on</span></button>
+      <a href="#contact" class="btn ghost sm">Let's talk</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="switch" role="navigation" aria-label="Switch portfolio" data-build data-t="650" data-d="400" data-crew="2">
+        <a aria-current="page">Virtual Assistant</a>
+        <a href="https://geraldjohnt.github.io/web-developer-portfolio/">Web Developer &#8599;</a>
+      </div>
+      <p class="kicker" data-build data-t="800" data-d="450" data-crew="2">Virtual assistant &amp; automation specialist</p>
+      <h1 data-build data-t="1000" data-d="1100" data-dir="y" data-crew="6">Your busywork,<br>on <span>autopilot</span>.</h1>
+      <p class="lede" data-build data-t="1900" data-d="800" data-crew="4">I'm Gerald John, a virtual assistant who doesn't just do your repetitive tasks — I automate them. I connect the tools you already use so lead follow-ups, client onboarding, invoice reminders and reports run on their own, and I handle everything that still needs a human.</p>
+      <div class="actions" data-build data-t="2550" data-d="500" data-crew="3">
+        <a href="#contact" class="btn">Automate my business</a>
+        <a href="#automations" class="btn ghost">See what I automate</a>
+      </div>
+      <ul class="badges" aria-label="Working with me" data-build data-t="2950" data-d="550" data-crew="3">
+        <li>International clients welcome</li>
+        <li>Any shift or time zone</li>
+        <li>Clear English communication</li>
+        <li><a href="#trial">Free trial task</a></li>
+      </ul>
+    </div>
+
+    <div class="stage" aria-label="Preview of the work I handle">
+      <svg class="links" viewBox="0 0 600 560" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M150 112 C 220 130, 240 170, 270 210"/>
+        <path d="M455 118 C 420 150, 380 170, 350 200"/>
+        <path d="M450 330 C 410 330, 390 320, 360 300"/>
+        <path d="M170 430 C 220 420, 250 400, 280 380"/>
+      </svg>
+      <div class="projector">
+        <div class="disc" data-build data-t="1300" data-d="500" data-crew="3"></div>
+        <div class="beam"></div>
+        <div class="holo" data-build data-t="1700" data-d="1300" data-dir="up" data-crew="5">
+          <img src="v2/gerald-cutout.webp" alt="Gerald John" width="560" height="814">
+          <div class="holo-lines" aria-hidden="true"></div>
+        </div>
+      </div>
+      <div class="tag t1" aria-hidden="true">ID · GERALD JOHN T.</div>
+      <div class="tag t2" aria-hidden="true">CEBU, PH · GMT+8</div>
+
+      <div class="panel p-proj" data-build data-mode="pull-left" data-t="2400" data-d="1000" data-crew="3">
+        <div class="pt">Projects <i>04</i></div>
+        <div class="kb"><div><small>To do</small>Q3 report deck</div><div><small>Doing</small>Client onboarding</div><div><small>Done</small>Invoices sent</div></div>
+      </div>
+      <div class="panel p-inbox" data-build data-mode="pull-right" data-t="2800" data-d="1000" data-crew="3">
+        <div class="pt">Inbox triage <i>Unread 0</i></div>
+        <div class="row"><b></b><span>New lead: website form</span><em>Lead</em></div>
+        <div class="row"><b class="c"></b><span>Invoice #1042 paid</span><em>Billing</em></div>
+        <div class="row"><b></b><span>Reschedule Thursday call</span><em>Cal</em></div>
+        <div class="row"><b></b><span>Weekly report ready</span><em>Auto</em></div>
+      </div>
+      <div class="panel p-cal" data-build data-mode="pull-right" data-t="3300" data-d="1000" data-crew="3">
+        <div class="pt">This week <i>Calendar</i></div>
+        <div class="cal">
+          <div>Mon<span style="top:18px;height:26px">Client sync</span><span class="c" style="top:52px;height:20px">Focus</span></div>
+          <div>Tue<span style="top:28px;height:36px">Onboard client</span></div>
+          <div>Wed<span class="c" style="top:18px;height:20px">Report</span><span style="top:46px;height:26px">Inbox zero</span></div>
+          <div>Thu<span style="top:36px;height:28px">Discovery call</span></div>
+          <div>Fri<span class="c" style="top:20px;height:40px">Weekly review</span></div>
+        </div>
+      </div>
+      <div class="panel p-stats" data-build data-mode="pull-bottom" data-t="3800" data-d="900" data-crew="3">
+        <div class="pt">Automations <i>Live</i></div>
+        <div class="ring-row">
+          <div class="ring"><svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="18"/><circle class="v" cx="22" cy="22" r="18" style="--v:.86"/></svg><strong>6</strong></div>
+          <p>workflows running<br><span>while you sleep</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="flow-strip panel" data-build data-t="4400" data-d="1100" data-crew="5">
+      <div class="pt">Automation · lead follow-up <i>Runs 24/7</i></div>
+      <ol class="flow">
+        <li><small>Trigger</small>Website form</li>
+        <li><small>Log</small>Google Sheets row</li>
+        <li class="c"><small>Reply</small>Gmail follow-up</li>
+        <li><small>Notify</small>Slack ping to you</li>
+      </ol>
+    </div>
+    <div class="stats">
+      <div data-build data-t="5000" data-d="500" data-crew="2"><strong data-count="2021" data-from="2000">2021</strong><span>Freelancing since</span></div>
+      <div data-build data-t="5120" data-d="500" data-crew="2"><strong data-count="10" data-suf="+">10+</strong><span>Freelance clients</span></div>
+      <div data-build data-t="5240" data-d="500" data-crew="2"><strong data-count="99" data-suf="%">99%</strong><span>On-time delivery</span></div>
+      <div data-build data-t="5360" data-d="500" data-crew="2"><strong data-count="12" data-suf="h">12h</strong><span>Avg. response window</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="automations" class="sec">
+  <div class="wrap">
+    <header class="head">
+      <p class="eyebrow" data-build>Automations</p>
+      <h2 data-build data-dir="y">Work that runs while you sleep</h2>
+      <p data-build>Most small businesses lose hours every week to the same copy-paste tasks. I map out where your time goes, then build simple, reliable automations with the tools you already pay for — and I stay on to keep them running.</p>
+    </header>
+    <div class="benefits">
+      <div class="benefit" data-build><span class="b-ico" aria-hidden="true">01</span><h3>Hours back every week</h3><p>Repetitive admin runs on its own, so you and your team focus on clients and growth.</p></div>
+      <div class="benefit" data-build><span class="b-ico" aria-hidden="true">02</span><h3>Fewer mistakes</h3><p>No more missed follow-ups, typos in spreadsheets, or forgotten invoices.</p></div>
+      <div class="benefit" data-build><span class="b-ico" aria-hidden="true">03</span><h3>Faster responses</h3><p>Leads and clients hear back in minutes, not days — even when you're offline.</p></div>
+    </div>
+    <div class="auto-grid">
+      <article class="auto" data-build data-dir="y">
+        <h3>Lead capture &amp; follow-up</h3>
+        <p class="intro">Every enquiry gets a fast reply and lands in your pipeline — no copy-pasting from forms.</p>
+        <ul class="steps">
+          <li class="when"><span>When</span>Someone fills in your website or Facebook lead form</li>
+          <li><span>Then</span>Lead is added to your CRM or Google Sheet, tagged by source</li>
+          <li><span>Then</span>A personalised welcome email goes out within minutes</li>
+          <li><span>Then</span>You get a Slack or email alert with the lead details</li>
+          <li><span>Then</span>A follow-up reminder is created if there's no reply in 3 days</li>
+        </ul>
+        <p class="result"><strong>Result:</strong> no lead sits unanswered, and you can see exactly where each one came from.</p>
+      </article>
+      <article class="auto" data-build data-dir="y">
+        <h3>Client onboarding</h3>
+        <p class="intro">New clients get a polished, consistent welcome without you lifting a finger.</p>
+        <ul class="steps">
+          <li class="when"><span>When</span>A contract is signed or the first payment comes in</li>
+          <li><span>Then</span>A client folder is created from your template in Google Drive</li>
+          <li><span>Then</span>Welcome email and intake form are sent automatically</li>
+          <li><span>Then</span>Project tasks are set up in Trello, Asana or Notion</li>
+          <li><span>Then</span>A kickoff call link is sent so they can book a time</li>
+        </ul>
+        <p class="result"><strong>Result:</strong> every client starts the same professional way, and nothing gets forgotten.</p>
+      </article>
+      <article class="auto" data-build data-dir="y">
+        <h3>Invoices &amp; payment reminders</h3>
+        <p class="intro">Stop chasing payments by hand and always know who has paid.</p>
+        <ul class="steps">
+          <li class="when"><span>When</span>An invoice is created or reaches its due date</li>
+          <li><span>Then</span>Polite reminders go out before and after the due date</li>
+          <li><span>Then</span>Your payment tracker updates its status automatically</li>
+          <li><span>Then</span>You're alerted only when something is overdue</li>
+          <li><span>Then</span>A receipt and thank-you email are sent once paid</li>
+        </ul>
+        <p class="result"><strong>Result:</strong> faster payments, fewer awkward emails, and a tracker that's always current.</p>
+      </article>
+      <article class="auto" data-build data-dir="y">
+        <h3>Inbox &amp; calendar</h3>
+        <p class="intro">Your inbox sorts itself, and scheduling happens without the back-and-forth.</p>
+        <ul class="steps">
+          <li class="when"><span>When</span>A new email arrives or someone books a meeting</li>
+          <li><span>Then</span>Emails are labelled and filtered by priority and type</li>
+          <li><span>Then</span>Attachments are saved to the right Drive folder</li>
+          <li><span>Then</span>Flagged emails become tasks on your to-do list</li>
+          <li><span>Then</span>Booked meetings get confirmations, reminders and a prep note</li>
+        </ul>
+        <p class="result"><strong>Result:</strong> a cleaner inbox, fewer no-shows, and no more manual scheduling.</p>
+      </article>
+      <article class="auto" data-build data-dir="y">
+        <h3>Weekly reporting</h3>
+        <p class="intro">Reports that used to take hours are waiting for you every Monday morning.</p>
+        <ul class="steps">
+          <li class="when"><span>When</span>Every Monday at 8 AM</li>
+          <li><span>Then</span>Data is pulled from your sheets, CRM, store or social accounts</li>
+          <li><span>Then</span>Numbers are compiled into a dashboard or summary doc</li>
+          <li><span>Then</span>Key changes and red flags are highlighted</li>
+          <li><span>Then</span>The report is emailed to you and your team</li>
+        </ul>
+        <p class="result"><strong>Result:</strong> decisions based on up-to-date numbers, without the spreadsheet grind.</p>
+      </article>
+      <article class="auto" data-build data-dir="y">
+        <h3>Content &amp; social publishing</h3>
+        <p class="intro">Approve a post once and it goes everywhere it needs to, on schedule.</p>
+        <ul class="steps">
+          <li class="when"><span>When</span>A post is marked "Approved" in your content calendar</li>
+          <li><span>Then</span>It's scheduled to the right platforms at the right time</li>
+          <li><span>Then</span>The calendar status updates to "Scheduled", then "Posted"</li>
+          <li><span>Then</span>New comments and DMs are routed to one inbox</li>
+          <li><span>Then</span>Monthly performance numbers are logged automatically</li>
+        </ul>
+        <p class="result"><strong>Result:</strong> a consistent posting rhythm, even in your busiest weeks.</p>
+      </article>
+    </div>
+    <p class="note" data-build>Not sure what can be automated in your business? <a href="#contact">Send me a list of your most repetitive tasks</a> and I'll tell you which ones can run on their own — for free. Need something more custom than Zapier or Make can handle? I'm also a full-stack developer and can <a href="https://geraldjohnt.github.io/web-developer-portfolio/">build it in code</a>.</p>
+  </div>
+</section>
+
+<section id="about" class="sec alt">
+  <div class="wrap about">
+    <div class="about-pic" data-build data-dir="up" data-crew="4">
+      <span class="corner tl"></span><span class="corner br"></span>
+      <img src="v2/gerald-cutout.webp" alt="Portrait of Gerald John" width="560" height="814" loading="lazy">
+      <p class="pic-tag">Gerald John Tangpos · Cebu, Philippines</p>
+    </div>
+    <div class="about-copy">
+      <p class="eyebrow" data-build>Hello, I'm</p>
+      <h2 data-build data-dir="y">Gerald John</h2>
+      <p class="role" data-build>Virtual Assistant &amp; Automation Specialist</p>
+      <p data-build>I've been freelancing as a virtual assistant since 2021, and I'm also a software engineer by background. That mix is my edge: I understand the day-to-day work of running a business, and I know how to make the tools behind it work together.</p>
+      <p data-build>I work best with founders and small teams who are drowning in recurring, detail-heavy work: scheduling, inbox management, follow-ups, reporting, and coordination.</p>
+      <p data-build>Here's what makes me different: whenever I do a task more than twice, I look for a way to automate it. You get a reliable assistant <em>and</em> systems that keep working in the background, so your business runs smoother every month we work together.</p>
+      <a href="#contact" class="btn ghost" data-build>Get in touch</a>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="sec">
+  <div class="wrap">
+    <header class="head">
+      <p class="eyebrow" data-build>Experience</p>
+      <h2 data-build data-dir="y">My freelance VA journey</h2>
+      <p data-build>All of my VA work has been freelance, starting in 2021. I began with small, simple tasks for solo business owners and grew into ongoing support and automation work for small teams.</p>
+    </header>
+    <ol class="timeline">
+      <li data-build><span class="when">2024 — Present</span><h3>Virtual Assistant &amp; Automation Specialist</h3><p class="org">Freelance · Small business owners and teams</p><p>Ongoing support for small teams in e-commerce and real estate: inbox and calendar management, client follow-ups, weekly reports, and automations that handle lead follow-up, onboarding, and payment reminders.</p></li>
+      <li data-build><span class="when">2023 — 2024</span><h3>Executive Virtual Assistant</h3><p class="org">Freelance · Coaching &amp; consulting businesses</p><p>Managed calendars, client scheduling and inboxes for coaches and consultants. Set up client onboarding templates and built my first Zapier workflows to cut down repetitive admin.</p></li>
+      <li data-build><span class="when">2022 — 2023</span><h3>Admin &amp; Customer Support Assistant</h3><p class="org">Freelance · Small online shops</p><p>Answered customer emails and chat messages, tracked orders and returns, updated product listings, and kept order spreadsheets clean and up to date.</p></li>
+      <li data-build><span class="when">2021 — 2022</span><h3>Virtual Assistant (Entry-Level)</h3><p class="org">Freelance · Solo entrepreneurs</p><p>Started with short, task-based projects: data entry, web research, contact list building, and basic email organization.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="services" class="sec alt">
+  <div class="wrap">
+    <header class="head">
+      <p class="eyebrow" data-build>Services</p>
+      <h2 data-build data-dir="y">Where I can help</h2>
+      <p data-build>Hands-on support where you need a person, automation wherever a task repeats. Open any card to see work samples.</p>
+    </header>
+    <div class="svc-grid">
+      <button type="button" class="svc" data-service="calendar" data-build data-dir="y"><span class="idx">01</span><h3>Calendar &amp; Email Management</h3><p>Inbox triage, scheduling, and follow-ups — with filters, templates and booking automations so nothing slips through.</p><span class="thumbs"><img src="VA_Portfolio_Screenshots/01-email-calendar/01-inbox-triage.png" alt="" loading="lazy"><img src="VA_Portfolio_Screenshots/01-email-calendar/02-weekly-calendar.png" alt="" loading="lazy"><img src="VA_Portfolio_Screenshots/01-email-calendar/03-follow-up-tracker.png" alt="" loading="lazy"></span><span class="open">View 5 samples &#8594;</span></button>
+      <button type="button" class="svc" data-service="dataentry" data-build data-dir="y"><span class="idx">02</span><h3>Data Entry &amp; Research</h3><p>Clean spreadsheets, organized databases, and research — plus automated data entry from forms, emails and apps.</p><span class="thumbs"><img src="VA_Portfolio_Screenshots/02-data-research/01-clean-lead-spreadsheet.png" alt="" loading="lazy"><img src="VA_Portfolio_Screenshots/02-data-research/02-before-after-cleanup.png" alt="" loading="lazy"><img src="VA_Portfolio_Screenshots/02-data-research/03-vendor-comparison.png" alt="" loading="lazy"></span><span class="open">View 5 samples &#8594;</span></button>
+      <button type="button" class="svc" data-service="support" data-build data-dir="y"><span class="idx">03</span><h3>Customer Support</h3><p>On-brand responses across email, chat, and social DMs, with saved replies and auto-routing for faster answers.</p><span class="thumbs"><img src="VA_Portfolio_Screenshots/03-customer-support/01-ticket-queue.png" alt="" loading="lazy"><img src="VA_Portfolio_Screenshots/03-customer-support/02-on-brand-email-reply.png" alt="" loading="lazy"><img src="VA_Portfolio_Screenshots/03-customer-support/03-live-chat.png" alt="" loading="lazy"></span><span class="open">View 5 samples &#8594;</span></button>
+      <button type="button" class="svc" data-service="coordination" data-build data-dir="y"><span class="idx">04</span><h3>Project Coordination</h3><p>Task boards, deadline tracking, and status updates — with automatic reminders and recurring tasks.</p><span class="thumbs"><img src="VA_Portfolio_Screenshots/04-project-coordination/01-kanban-board.png" alt="" loading="lazy"><img src="VA_Portfolio_Screenshots/04-project-coordination/02-timeline-gantt.png" alt="" loading="lazy"><img src="VA_Portfolio_Screenshots/04-project-coordination/03-weekly-status-update.png" alt="" loading="lazy"></span><span class="open">View 5 samples &#8594;</span></button>
+      <button type="button" class="svc" data-service="documents" data-build data-dir="y"><span class="idx">05</span><h3>Document &amp; File Organization</h3><p>Cloud folders, templates, and naming systems — with auto-filing so they actually stay tidy.</p><span class="thumbs"><img src="VA_Portfolio_Screenshots/05-document-file-organization/01-cloud-folder-structure.png" alt="" loading="lazy"><img src="VA_Portfolio_Screenshots/05-document-file-organization/02-file-naming-system.png" alt="" loading="lazy"><img src="VA_Portfolio_Screenshots/05-document-file-organization/03-template-library.png" alt="" loading="lazy"></span><span class="open">View 5 samples &#8594;</span></button>
+      <button type="button" class="svc" data-service="social" data-build data-dir="y"><span class="idx">06</span><h3>Social Media Support</h3><p>Content scheduling, captions, and community management, with an automated approval-to-publish workflow.</p><span class="thumbs"><img src="VA_Portfolio_Screenshots/06-social-media/01-content-calendar.png" alt="" loading="lazy"><img src="VA_Portfolio_Screenshots/06-social-media/02-post-composer-caption.png" alt="" loading="lazy"><img src="VA_Portfolio_Screenshots/06-social-media/03-scheduled-queue.png" alt="" loading="lazy"></span><span class="open">View 5 samples &#8594;</span></button>
+    </div>
+  </div>
+</section>
+
+<section id="tools" class="sec">
+  <div class="wrap">
+    <header class="head">
+      <p class="eyebrow" data-build>Toolkit</p>
+      <h2 data-build data-dir="y">The tools I work in and connect</h2>
+    </header>
+    <ul class="tools">
+      <li data-build data-crew="1">Zapier</li><li data-build data-crew="1">Make</li><li data-build data-crew="1">Google Apps Script</li><li data-build data-crew="1">Google Workspace</li><li data-build data-crew="1">Microsoft 365</li><li data-build data-crew="1">Notion</li><li data-build data-crew="1">Trello / Asana</li><li data-build data-crew="1">Slack</li><li data-build data-crew="1">Canva</li><li data-build data-crew="1">Calendly</li><li data-build data-crew="1">Zoom</li><li data-build data-crew="1">Airtable</li><li data-build data-crew="1">HubSpot</li><li data-build data-crew="1">Zendesk</li><li data-build data-crew="1">QuickBooks</li>
+    </ul>
+  </div>
+</section>
+
+<section id="process" class="sec alt">
+  <div class="wrap">
+    <header class="head">
+      <p class="eyebrow" data-build>Process</p>
+      <h2 data-build data-dir="y">From busywork to autopilot</h2>
+      <p data-build>A simple, low-risk path from our first message to a business that runs smoother every week.</p>
+    </header>
+    <ol class="process">
+      <li data-build data-dir="y"><span class="step">01</span><h3>Workflow audit</h3><p>We walk through your week, your tools, and the tasks that eat your time. I flag what I can take over and what can be automated.</p></li>
+      <li data-build data-dir="y"><span class="step">02</span><h3>Automation plan</h3><p>You get a clear list of tasks and automations, ranked by time saved, with a realistic schedule — before any work starts.</p></li>
+      <li data-build data-dir="y"><span class="step">03</span><h3>Build &amp; onboard</h3><p>I set up access and build the automations, test them with real examples, and document how each one works.</p></li>
+      <li data-build data-dir="y"><span class="step">04</span><h3>Run &amp; improve</h3><p>I handle the day-to-day work, keep the automations running, and keep finding new tasks to take off your plate.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="trial" class="sec">
+  <div class="wrap">
+    <div class="trial panel-lg" data-build data-dir="y" data-crew="6">
+      <div class="trial-head">
+        <div>
+          <p class="eyebrow">Free trial</p>
+          <h2>Try me first. It's free.</h2>
+          <p>Before you hire me, give me one real task from your business. You'll see my speed, accuracy and communication on your own work, with no payment and no commitment.</p>
+        </div>
+        <a href="mailto:geraldjohnt@gmail.com?subject=Free%20trial%20task%20request&amp;body=Hi%20Gerald%2C%0A%0AI%27d%20like%20to%20try%20your%20free%20trial%20task.%0A%0AThe%20task%3A%20%0AWhat%20a%20good%20result%20looks%20like%3A%20%0ATools%20I%20use%3A%20%0AMy%20timezone%3A%20%0A" class="btn">Request a free trial task</a>
+      </div>
+      <ol class="trial-steps">
+        <li><span>01</span><h3>Send one task</h3><p>For example: clean up a spreadsheet, research 20 leads, sort an inbox, or map out one automation.</p></li>
+        <li><span>02</span><h3>I deliver in 24–48 hours</h3><p>You get the finished work plus a short note on how I did it and what I'd improve.</p></li>
+        <li><span>03</span><h3>You decide</h3><p>Happy with it? We start working together. Not a fit? No charge, no hard feelings.</p></li>
+      </ol>
+      <p class="fine">One trial task per business, up to 2 hours of work. Happy to sign an NDA first, or you can share sample data instead of real records.</p>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials" class="sec alt">
+  <div class="wrap">
+    <header class="head">
+      <p class="eyebrow" data-build>Testimonials</p>
+      <h2 data-build data-dir="y">What clients say</h2>
+    </header>
+    <div class="quotes">
+      <figure data-build><p class="tx">Incoming message</p><blockquote>"Gerald took over my inbox and calendar in a week and I genuinely forgot what it felt like to be behind on everything."</blockquote><figcaption>Client, E-commerce business</figcaption></figure>
+      <figure data-build><p class="tx">Incoming message</p><blockquote>"Direct, organized, and doesn't need to be micromanaged. Exactly what I needed as a solo founder."</blockquote><figcaption>Client, Coaching business</figcaption></figure>
+      <figure data-build><p class="tx">Incoming message</p><blockquote>"Our reporting used to take me half a day. Gerald built a system that runs itself now."</blockquote><figcaption>Client, Real estate business</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="sec">
+  <div class="wrap faq-wrap">
+    <header class="head">
+      <p class="eyebrow" data-build>FAQ</p>
+      <h2 data-build data-dir="y">Good to know</h2>
+    </header>
+    <div class="faq">
+      <details data-build><summary>What kinds of tasks can you automate?</summary><p>Anything that follows the same steps every time: lead follow-ups, client onboarding, invoice reminders, data entry from forms and emails, file organization, meeting scheduling, and weekly reports. If you're copy-pasting it, it can probably be automated.</p></details>
+      <details data-build><summary>Do I need to buy new software?</summary><p>Usually not. I start with the tools you already use, like Google Workspace, your CRM and your email. If a connector tool such as Zapier or Make is needed, I'll recommend the cheapest plan that fits before you spend anything.</p></details>
+      <details data-build><summary>What if an automation breaks?</summary><p>I monitor the automations I build and fix issues as part of ongoing support. Every automation also comes with a short written guide, so you're never locked in or left guessing how it works.</p></details>
+      <details data-build><summary>What hours do you work?</summary><p>Any shift works for me. I work with international clients and can match your business hours, whether you're in the US, UK, Europe, Australia or Asia. We'll agree on the exact schedule during onboarding.</p></details>
+      <details data-build><summary>Do you work with a minimum commitment?</summary><p>No. You can start with a <a href="#trial">free trial task</a> to see my work first, then choose hourly or a monthly retainer. No long lock-in.</p></details>
+      <details data-build><summary>How do we communicate day-to-day? Will language be a problem?</summary><p>Not at all. I work with clients from different countries and communicate clearly in English, in writing and on calls. Day to day, I usually use Slack or email for updates, with a short weekly check-in call, and I'm happy to adapt to what you already use.</p></details>
+      <details data-build><summary>Can you handle sensitive or financial data?</summary><p>Yes — I follow standard confidentiality practices and I'm comfortable signing an NDA before we start.</p></details>
+      <details data-build><summary>What industries have you supported?</summary><p>Through my freelance work: mainly e-commerce, coaching and consulting, and real estate — but the core skill set transfers well beyond that.</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="development" class="sec alt">
+  <div class="wrap dev" data-build data-crew="5">
+    <div>
+      <p class="eyebrow">Also available</p>
+      <h2>Need a website or custom software?</h2>
+      <p>I'm also a full-stack web developer. If your business has outgrown spreadsheets and no-code tools, I can build what you need: a website, a client portal, an internal dashboard, or custom integrations between your apps. You work with one person who understands both your day-to-day operations and the code behind them.</p>
+      <a href="https://geraldjohnt.github.io/web-developer-portfolio/" class="btn">View my developer portfolio &#8599;</a>
+    </div>
+    <ul>
+      <li>Business websites &amp; WordPress</li>
+      <li>Web apps &amp; client portals</li>
+      <li>Internal tools &amp; dashboards</li>
+      <li>API integrations &amp; custom automation</li>
+      <li>Maintenance, fixes &amp; troubleshooting</li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact" class="sec contact">
+  <div class="wrap contact-wrap">
+    <header class="head center">
+      <p class="eyebrow" data-build>Contact</p>
+      <h2 data-build data-dir="y">Let's put your busywork on <span>autopilot</span>.</h2>
+      <p data-build>Tell me which tasks eat up your week. I'll reply with a simple, no-pressure plan showing what I can take over and what can be automated.</p>
+      <p class="contact-note" data-build>Based in Cebu, Philippines (GMT+8) · Working with international clients · Any shift or time zone</p>
+    </header>
+    <form class="contact-form panel-lg" id="contact-form" data-endpoint="https://script.google.com/macros/s/AKfycbxHk-h4SQ6ZB-GV5NGepYZzMXKfwT2meGYlSBVWfr6hbH8Pa3ydvC6iAsIAO9cohR_k/exec" data-email="geraldjohnt@gmail.com" novalidate data-build data-dir="y" data-crew="6">
+      <input type="hidden" name="source" value="va">
+      <div class="hp" aria-hidden="true"><label for="cf-website">Leave this empty</label><input type="text" id="cf-website" name="website" tabindex="-1" autocomplete="off"></div>
+      <div><label for="cf-name">Your name</label><input type="text" id="cf-name" name="name" required maxlength="100" autocomplete="name"></div>
+      <div><label for="cf-email">Email</label><input type="email" id="cf-email" name="email" required maxlength="200" autocomplete="email"></div>
+      <div class="full"><label for="cf-service">What do you need help with?</label>
+        <select id="cf-service" name="service">
+          <option>Automation setup</option>
+          <option>Calendar &amp; email management</option>
+          <option>Data entry &amp; research</option>
+          <option>Customer support</option>
+          <option>Project coordination</option>
+          <option>Document &amp; file organization</option>
+          <option>Social media support</option>
+          <option>Free trial task</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div class="full"><label for="cf-message">Message</label><textarea id="cf-message" name="message" required minlength="5" maxlength="5000" placeholder="Which tasks take up most of your week? Which tools do you use?"></textarea></div>
+      <div class="full form-foot">
+        <button type="submit" class="btn">Send message</button>
+        <p class="form-privacy">You'll get an instant confirmation email (one of my own automations). Your details are only used to reply to you.</p>
+      </div>
+      <p class="form-status full" role="status" aria-live="polite"></p>
+    </form>
+    <p class="alt-title" data-build>Or reach me directly</p>
+    <div class="contact-actions" data-build data-crew="4">
+      <a href="mailto:geraldjohnt@gmail.com?subject=Automation%20%26%20VA%20enquiry" class="btn ghost">Email me</a>
+      <a href="mailto:geraldjohnt@gmail.com?subject=Discovery%20call%20request&amp;body=Hi%20Gerald%2C%0A%0AI%27d%20like%20to%20book%20a%20short%20call.%0A%0AWhat%20I%20need%20help%20with%3A%20%0AMy%20timezone%3A%20%0ATimes%20that%20work%20for%20me%3A%20%0A" class="btn ghost">Book a call</a>
+      <a href="https://www.upwork.com/freelancers/~011ad574500f310d02" class="btn ghost" target="_blank" rel="noopener">Hire me on Upwork</a>
+    </div>
+    <div class="contact-links" data-build>
+      <a href="mailto:geraldjohnt@gmail.com">geraldjohnt@gmail.com</a>
+      <a href="https://www.linkedin.com/in/gerald-john-tangpos-810341109/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.upwork.com/freelancers/~011ad574500f310d02" target="_blank" rel="noopener">Upwork</a>
+      <a href="https://geraldjohnt.github.io/web-developer-portfolio/">Developer portfolio</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot"><div class="wrap">© <span id="year">2026</span> Gerald John · Virtual Assistant &amp; Automation Specialist · Assembled by <span id="unit-count">30</span> tiny robots · Also a <a href="https://geraldjohnt.github.io/web-developer-portfolio/">full-stack web developer</a></div></footer>
+
+<div class="status" id="status" aria-hidden="true"><i></i><span id="status-txt">Deploying units</span></div>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+  <div class="modal-box">
+    <div class="modal-top"><h3 id="modal-title"></h3><button type="button" class="modal-x" id="modal-close" aria-label="Close">&times;</button></div>
+    <div class="modal-stage">
+      <button type="button" class="m-arrow prev" id="m-prev" aria-label="Previous sample">&#8249;</button>
+      <img id="modal-img" src="" alt="">
+      <button type="button" class="m-arrow next" id="m-next" aria-label="Next sample">&#8250;</button>
+    </div>
+    <p class="modal-cap"><span id="modal-cap"></span> <span class="modal-count" id="modal-count" aria-live="polite"></span></p>
+  </div>
+</div>
+
+<script src="contact-form.js"></script>
+<script src="v2/robots.js"></script>
+<script src="v2/v2.js"></script>
+</body>
+</html>
