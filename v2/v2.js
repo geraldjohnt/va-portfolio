@@ -19,6 +19,26 @@
   document.addEventListener('click', function (e) { if (nav.classList.contains('open') && !nav.contains(e.target)) setOpen(false); });
   window.addEventListener('resize', function () { if (window.innerWidth > 860) setOpen(false); });
 
+  /* back to top */
+  var toTop = document.getElementById('to-top');
+  var ttTick = false;
+  function checkTop() {
+    ttTick = false;
+    var doc = document.documentElement, near = window.scrollY + window.innerHeight >= doc.scrollHeight - window.innerHeight * 0.9;
+    var show = near && window.scrollY > window.innerHeight;
+    toTop.classList.toggle('show', show);
+    toTop.tabIndex = show ? 0 : -1;
+  }
+  window.addEventListener('scroll', function () { if (!ttTick) { ttTick = true; requestAnimationFrame(checkTop); } }, { passive: true });
+  window.addEventListener('resize', checkTop);
+  toTop.addEventListener('click', function (e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    if (window.Robots) window.Robots.sound.chirp();
+    var first = document.querySelector('.brand'); if (first) first.focus({ preventScroll: true });
+  });
+  checkTop();
+
   /* counters roll up once their block is built */
   function count(el) {
     if (el.dataset.done) return; el.dataset.done = '1';
