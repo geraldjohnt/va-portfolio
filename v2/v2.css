@@ -37,7 +37,10 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 12px)}
   -webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.45) 60%,rgba(0,0,0,.25));mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.45) 60%,rgba(0,0,0,.25))}
 
 /* ---------- build states (only when JS runs) ---------- */
-.js .unbuilt{-webkit-mask-image:linear-gradient(#0000000d,#0000000d);mask-image:linear-gradient(#0000000d,#0000000d)}
+.js .unbuilt{-webkit-mask-image:linear-gradient(#0000001a,#0000001a);mask-image:linear-gradient(#0000001a,#0000001a)}
+/* a box (card, panel, button) waits for its frame robot: show nothing but the ghosted content inside */
+.js .bx{background:transparent!important;border-color:transparent!important;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+.js .bx::before,.js .bx::after{opacity:0!important}
 .js .unbuilt.pull{-webkit-mask-image:none;mask-image:none;opacity:0}
 .built-flash{animation:flash .5s ease-out}
 @keyframes flash{0%{filter:brightness(1.7) drop-shadow(0 0 10px rgba(111,227,245,.6))}100%{filter:none}}
@@ -316,14 +319,18 @@ html:not(.js) .links path,.reduce .links path{stroke-dashoffset:0}
 .foot{padding-block:28px calc(28px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line-2);color:var(--ink-dim);font-size:13px}
 .foot a{color:var(--copper-l)}
 
-/* status pill */
-.status{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:45;display:flex;align-items:center;gap:8px;padding:8px 12px;
-  background:rgba(7,10,15,.82);border:1px solid var(--line);font:500 10.5px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--arc);pointer-events:none;white-space:nowrap;
-  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:opacity .6s}
-.status i{width:7px;height:7px;border-radius:50%;background:var(--copper-l);box-shadow:0 0 8px var(--copper);animation:blink 1s steps(2) infinite}
-.status.done i{background:var(--arc);box-shadow:0 0 8px var(--arc);animation:none}
-.status.hide{opacity:0}
-html:not(.js) .status,.reduce .status{display:none}
+/* back to top: appears once the visitor reaches the bottom part of the page */
+.to-top{position:fixed;left:max(16px,env(safe-area-inset-left,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:46;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+  width:54px;height:58px;background:rgba(7,12,18,.85);border:1px solid rgba(111,227,245,.4);color:var(--arc);text-decoration:none;
+  font:500 9.5px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  opacity:0;visibility:hidden;transform:translateY(14px);transition:opacity .35s,transform .45s var(--ease),visibility .35s,border-color .2s,box-shadow .2s}
+.to-top.show{opacity:1;visibility:visible;transform:none}
+.to-top::before,.to-top::after{content:"";position:absolute;width:10px;height:10px;border:2px solid var(--copper-l)}
+.to-top::before{left:-4px;top:-4px;border-right:0;border-bottom:0}.to-top::after{right:-4px;bottom:-4px;border-left:0;border-top:0}
+.to-top:hover{border-color:var(--arc);box-shadow:0 0 22px -6px rgba(111,227,245,.7)}
+.tt-ico{width:12px;height:12px;border-left:2px solid var(--arc);border-top:2px solid var(--arc);transform:translateY(3px) rotate(45deg);transition:transform .3s var(--ease)}
+.to-top:hover .tt-ico{transform:translateY(0) rotate(45deg)}
+@media (max-width:640px){.to-top{bottom:calc(46px + env(safe-area-inset-bottom,0px));width:46px;height:50px}}
 
 /* modal */
 .modal{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:16px;background:rgba(3,6,10,.86);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
@@ -388,7 +395,6 @@ html:not(.js) .status,.reduce .status{display:none}
   .timeline{padding-left:26px}
   .timeline::before{left:4px}
   .timeline li::before{left:-27px}
-  .status{right:auto;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom,0px))}
   .m-arrow{top:auto;bottom:-56px;transform:none}
 }
 @media (max-width:380px){

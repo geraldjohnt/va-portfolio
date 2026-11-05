@@ -26,9 +26,13 @@ load (offline, blocked) or the visitor prefers reduced motion, the page still wo
 ## Version 2 (preview)
 `version2.html` is a redesign that sits next to the live `index.html` without replacing it. Open it at
 https://geraldjohnt.github.io/va-portfolio/version2.html once deployed.
-- The page starts as a faint blueprint. A crew of small robots (30 on desktop, 18 on phones) assembles the hero in
-  about 6 seconds, then builds each section as it scrolls into view. Some hero panels are towed in from the screen edges.
-- Files: `v2/v2.css` (styles), `v2/robots.js` (robot crew, build jobs and synthesized sounds), `v2/v2.js` (menu,
+- The page starts as a faint blueprint. A crew of small robots (30 on desktop, 18 on phones) builds it piece by piece:
+  one robot traces each card or panel frame, one robot writes each line of text, and crews tow some hero panels in
+  from the screen edges. Nothing renders until its robot has arrived, and the reveal moves at that robot's pace.
+- Robots wait in a charging dock (a spire in the right margin on wide screens, a bay or a slim rail at the bottom on
+  smaller ones). Only docked robots take new jobs; a robot that finishes flies back and recharges first.
+- A back-to-top button appears once the visitor reaches the bottom part of the page.
+- Files: `v2/v2.css` (styles), `v2/robots.js` (robot crew, dock, build tasks and synthesized sounds), `v2/v2.js` (menu,
   counters, work-sample viewer) and `v2/gerald-cutout.webp` (portrait on a transparent background).
 - Hero timing comes from `data-t` (start, ms) and `data-d` (duration, ms) on each `[data-build]` element. `data-dir`
   sets the build direction (`x`, `y` or `up`), `data-mode` sets a tow-in (`pull-left`, `pull-right`, `pull-bottom`)
