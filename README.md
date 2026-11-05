@@ -3,29 +3,30 @@
 A single-page portfolio site for a Virtual Assistant & Automation Specialist, built in plain HTML, CSS and JavaScript.
 
 ## Files
-- `index.html` — the whole site: markup, styles (in `<style>`) and scripts (in `<script>`)
-- `profile.jpg` — portrait used in the About section
+- `index.html` — the live site (version 2, assembled by robots). Styles and scripts live in `v2/`
+- `v2/` — `v2.css` (styles), `robots.js` (robot crew, dock, build tasks, sounds), `v2.js` (menu, counters,
+  work-sample viewer, back to top) and `gerald-cutout.webp` (portrait)
+- `old.html` — the previous design, kept for reference (marked `noindex`). It uses `profile.jpg`
+- `version2.html` — redirects to `index.html` so older links keep working
 - `VA_Portfolio_Screenshots/` — work samples shown in each service card's gallery/carousel
 - `.github/workflows/static.yml` — deploys the site to GitHub Pages on every push to `main`
 
 ## Run it
-Open `index.html` in a browser. No build step. The 3D background loads Three.js from cdnjs; if it can't
-load (offline, blocked) or the visitor prefers reduced motion, the page still works without it.
+Serve the folder and open `index.html` (for example `python3 -m http.server`). No build step. Visitors with
+reduced motion turned on, or without JavaScript, get the finished page with no robots.
 
 ## Customize
 - **Contact links:** email, "Book a call" (opens a pre-filled email), LinkedIn and Upwork live in the `#contact` section.
 - **Developer portfolio links:** the hero switch, nav, `#development` section and footer link to https://geraldjohnt.github.io/web-developer-portfolio/.
-- **Automations:** the example workflows are the `.auto-card` blocks in the `#automations` section.
+- **Automations:** the example workflows are the `.auto` blocks in the `#automations` section.
 - **Testimonials:** client quotes in `#testimonials` are shown without client names, attributed by industry only.
-- **Work samples:** each service card has three thumbnails in the HTML, and the full set lives in the
-  `galleryData` object in the script. Keep the two in sync when adding or renaming screenshots.
+- **Work samples:** each service card shows three thumbnails in the HTML; the full set of five per service and
+  their captions live in the `data` object in `v2/v2.js`. Keep the two in sync when adding or renaming screenshots.
 - **Contact form:** `contact-form.js` posts to the Google Apps Script web app set in `data-endpoint` on `#contact-form`.
   The script and setup guide are in `apps-script/` (see `apps-script/SETUP.md`). With no endpoint set, the form opens a pre-filled email.
 - **CV:** `cv/Gerald-John-Tangpos-VA-CV.pdf` and `.docx`, exported from the CV doc.
 
-## Version 2 (preview)
-`version2.html` is a redesign that sits next to the live `index.html` without replacing it. Open it at
-https://geraldjohnt.github.io/va-portfolio/version2.html once deployed.
+## How the page works
 - The page starts completely blank (no faded text or outlines). A crew of small robots (30 on desktop, 18 on phones) builds it piece by piece:
   one robot traces each card or panel frame, one robot writes each line of text, and crews tow some hero panels in
   from the screen edges. Nothing renders until its robot has arrived, and the reveal moves at that robot's pace.
