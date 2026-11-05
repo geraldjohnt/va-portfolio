@@ -1,4 +1,4 @@
-/* Robot builders for version2.html — v2 engine.
+/* Robot builders for index.html (the version 2 page).
 
    How the page gets built
    - Every [data-build] region starts as a faint blueprint.
