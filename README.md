@@ -26,7 +26,7 @@ load (offline, blocked) or the visitor prefers reduced motion, the page still wo
 ## Version 2 (preview)
 `version2.html` is a redesign that sits next to the live `index.html` without replacing it. Open it at
 https://geraldjohnt.github.io/va-portfolio/version2.html once deployed.
-- The page starts as a faint blueprint. A crew of small robots (30 on desktop, 18 on phones) builds it piece by piece:
+- The page starts completely blank (no faded text or outlines). A crew of small robots (30 on desktop, 18 on phones) builds it piece by piece:
   one robot traces each card or panel frame, one robot writes each line of text, and crews tow some hero panels in
   from the screen edges. Nothing renders until its robot has arrived, and the reveal moves at that robot's pace.
 - Robots wait in a charging dock (a spire in the right margin on wide screens, a bay or a slim rail at the bottom on

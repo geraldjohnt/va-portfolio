@@ -37,11 +37,12 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 12px)}
   -webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.45) 60%,rgba(0,0,0,.25));mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.45) 60%,rgba(0,0,0,.25))}
 
 /* ---------- build states (only when JS runs) ---------- */
-.js .unbuilt{-webkit-mask-image:linear-gradient(#0000001a,#0000001a);mask-image:linear-gradient(#0000001a,#0000001a)}
+/* before its robots start, a region is completely invisible (layout is kept so nothing jumps) */
+.js [data-build]:not(.released){-webkit-mask-image:linear-gradient(transparent,transparent);mask-image:linear-gradient(transparent,transparent)}
+.reduce [data-build]{-webkit-mask-image:none!important;mask-image:none!important}
 /* a box (card, panel, button) waits for its frame robot: show nothing but the ghosted content inside */
-.js .bx{background:transparent!important;border-color:transparent!important;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
-.js .bx::before,.js .bx::after{opacity:0!important}
-.js .unbuilt.pull{-webkit-mask-image:none;mask-image:none;opacity:0}
+.js .bx,.js .bxw{background:transparent!important;border-color:transparent!important;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+.js .bx::before,.js .bx::after,.js .bxw::before,.js .bxw::after{opacity:0!important}
 .built-flash{animation:flash .5s ease-out}
 @keyframes flash{0%{filter:brightness(1.7) drop-shadow(0 0 10px rgba(111,227,245,.6))}100%{filter:none}}
 

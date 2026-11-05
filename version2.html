@@ -11,7 +11,9 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <link rel="preload" as="image" href="v2/gerald-cutout.webp">
 <link rel="stylesheet" href="v2/v2.css">
-<script>document.documentElement.classList.add('js');</script>
+<script>document.documentElement.classList.add('js');
+/* if the robot script never loads, show the finished page instead of a blank one */
+setTimeout(function(){ if(!window.Robots) document.documentElement.classList.add('reduce'); }, 4000);</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -422,7 +424,7 @@
 
 </main>
 
-<footer class="foot"><div class="wrap">© <span id="year">2026</span> Gerald John · Virtual Assistant &amp; Automation Specialist · Assembled by <span id="unit-count">30</span> tiny robots · Also a <a href="https://geraldjohnt.github.io/web-developer-portfolio/">full-stack web developer</a></div></footer>
+<footer class="foot"><div class="wrap" data-build>© <span id="year">2026</span> Gerald John · Virtual Assistant &amp; Automation Specialist · Assembled by <span id="unit-count">30</span> tiny robots · Also a <a href="https://geraldjohnt.github.io/web-developer-portfolio/">full-stack web developer</a></div></footer>
 
 <a href="#top" class="to-top" id="to-top" aria-label="Back to top" tabindex="-1"><span class="tt-ico" aria-hidden="true"></span><span class="tt-lbl">Top</span></a>
 
